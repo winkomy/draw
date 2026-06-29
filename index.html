@@ -74,7 +74,7 @@ react-dom/cjs/react-dom.production.min.js:
   .jtDock{position:fixed;right:22px;bottom:22px;z-index:2147483000;display:flex;flex-direction:column;gap:10px;align-items:flex-end;font-family:Inter,system-ui,sans-serif}
   .jtLaunch{display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border:0;border-radius:13px;color:#fff;font:600 12.5px/1 Inter;letter-spacing:.2px;cursor:pointer;box-shadow:0 12px 28px rgba(31,78,121,.32),inset 0 1px 0 rgba(255,255,255,.2);transition:transform .16s cubic-bezier(.2,.8,.2,1),box-shadow .16s}
   .jtLaunch:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 18px 38px rgba(31,78,121,.44)}.jtLaunch:active{transform:translateY(-1px) scale(.99)}
-  #jtBtnStudio{background:linear-gradient(135deg,#1f4e79,#2a64a0);font-size:13px;padding:12px 18px}#jtBtnNozzle{background:linear-gradient(135deg,#2f6f57,#3a8c6e)}#jtBtnBom{background:linear-gradient(135deg,#9a6a17,#c08a2a)}
+  #jtBtnStudio{background:linear-gradient(135deg,#1f4e79,#2a64a0);font-size:13px;padding:12px 18px}#jtBtnDraw{background:linear-gradient(135deg,#2f6f57,#3a8c6e)}#jtBtnBom{background:linear-gradient(135deg,#9a6a17,#c08a2a)}
   .jtOv{position:fixed;inset:0;z-index:2147483001;background:rgba(13,20,30,.5);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s}.jtOv.open{opacity:1;visibility:visible}
   .jtCard{position:absolute;inset:2.4vh;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 40px 100px rgba(13,20,30,.5);display:flex;flex-direction:column;transform:translateY(14px) scale(.985);opacity:.5;transition:transform .26s cubic-bezier(.16,.84,.28,1),opacity .26s}.jtOv.open .jtCard{transform:none;opacity:1}
   .jtBar{display:flex;align-items:center;gap:13px;height:58px;padding:0 18px;background:linear-gradient(180deg,#fff,#f4f8fc);border-bottom:1px solid #e6ebf2}
@@ -83,16 +83,7 @@ react-dom/cjs/react-dom.production.min.js:
   .jtChip{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:12px;color:#1f4e79;background:#eaf1fa;border:1px solid #d6e3f2;border-radius:999px;padding:6px 14px}.jtChip i{width:7px;height:7px;border-radius:50%;background:#2e9e6b;display:inline-block;box-shadow:0 0 0 3px rgba(46,158,107,.18)}
   .jtClose{width:36px;height:36px;border:1px solid #dde4ee;background:#fff;border-radius:11px;color:#5a6675;font-size:16px;cursor:pointer;display:grid;place-items:center;transition:.14s}.jtClose:hover{background:#f1f5fa;color:#1f4e79;border-color:#bcd0e8;transform:rotate(90deg)}
   .jtFrame{flex:1;width:100%;border:0;background:#eef2f8}@media(max-width:600px){.jtCard{inset:0;border-radius:0}.jtDock{right:14px;bottom:14px}}
-</style>
-<div class="jtDock">
-  <button class="jtLaunch" id="jtBtnNozzle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg> Piping Openings</button>
-  <button class="jtLaunch" id="jtBtnBom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 3h9l4 4v14H6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9h6M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> BOM</button>
-  <button class="jtLaunch" id="jtBtnStudio"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 8c0-1.7 3.1-3 7-3s7 1.3 7 3-3.1 3-7 3-7-1.3-7-3z" stroke="currentColor" stroke-width="1.8"/><path d="M5 8v8c0 1.7 3.1 3 7 3s7-1.3 7-3V8" stroke="currentColor" stroke-width="1.8"/></svg> Tank Studio</button>
-</div>
-<div class="jtOv" id="jtOvStudio"><div class="jtCard">
-  <div class="jtBar"><div class="lg" style="background:linear-gradient(135deg,#1f4e79,#2a64a0)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 8c0-1.7 3.1-3 7-3s7 1.3 7 3-3.1 3-7 3-7-1.3-7-3z" stroke="currentColor" stroke-width="1.8"/><path d="M5 8v8c0 1.7 3.1 3 7 3s7-1.3 7-3V8" stroke="currentColor" stroke-width="1.8"/></svg></div><div><div class="tt">Steel Panel Tank Studio</div><div class="sb">Layout → Fittings &amp; 3D → BOM &amp; Export</div></div>
-  <span class="jtChip" id="jtChipStudio"><i></i> independent</span><button class="jtClose" data-cl="jtOvStudio">&#10005;</button></div>
-  <iframe class="jtFrame" id="jtFrStudio" title="Tank Studio" srcdoc="<!doctype html>
+</style><div class="jtDock"><button class="jtLaunch" id="jtBtnDraw"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3h10l4 4v14H5z"/><path d="M9 8h4M9 12h6M9 16h6"/></svg> Drawings</button><button class="jtLaunch" id="jtBtnBom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 3h9l4 4v14H6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9h6M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> BOM</button><button class="jtLaunch" id="jtBtnStudio"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 8c0-1.7 3.1-3 7-3s7 1.3 7 3-3.1 3-7 3-7-1.3-7-3z" stroke="currentColor" stroke-width="1.8"/><path d="M5 8v8c0 1.7 3.1 3 7 3s7-1.3 7-3V8" stroke="currentColor" stroke-width="1.8"/></svg> Tank Studio</button></div><div class="jtOv" id="jtOvStudio"><div class="jtCard"><div class="jtBar"><div class="lg" style="background:linear-gradient(135deg,#1f4e79,#2a64a0)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 8c0-1.7 3.1-3 7-3s7 1.3 7 3-3.1 3-7 3-7-1.3-7-3z" stroke="currentColor" stroke-width="1.8"/><path d="M5 8v8c0 1.7 3.1 3 7 3s7-1.3 7-3V8" stroke="currentColor" stroke-width="1.8"/></svg></div><div><div class="tt">Steel Panel Tank Studio</div><div class="sb">Layout &#8594; Fittings &amp; 3D &#8594; BOM</div></div><span class="jtChip" id="jtChipStudio"><i></i> independent</span><button class="jtClose" data-cl="jtOvStudio">&#10005;</button></div><iframe class="jtFrame" id="jtFrStudio" title="Steel Panel Tank Studio" srcdoc="<!doctype html>
 <html lang=&quot;en&quot;>
 <head>
 <meta charset=&quot;utf-8&quot; />
@@ -166,6 +157,7 @@ react-dom/cjs/react-dom.production.min.js:
   .addlvl{border:1px solid var(--accent);color:var(--accent);background:#eef4fb;border-radius:7px;font:600 11px Inter;padding:4px 9px;cursor:pointer}
   .addlvl:hover{background:var(--accent);color:#fff}
   .lvlcards{display:flex;flex-direction:column;gap:6px}
+  .cpick{width:36px;height:24px;border:1px solid var(--line2);border-radius:6px;padding:0;cursor:pointer;background:none}
   .lvlcard{display:flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:9px;padding:3px 5px;background:#fafbfd}
   .lvlcard.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent);background:var(--soft)}
   .lvlcard .eye{border:0;background:none;cursor:pointer;color:var(--accent);display:grid;place-items:center;padding:2px;border-radius:6px}
@@ -263,7 +255,8 @@ react-dom/cjs/react-dom.production.min.js:
         <p class=&quot;hint&quot; style=&quot;margin-top:7px&quot;>👁 show/hide in 3D · click a level to draw its stays.</p></div>
       <div class=&quot;panel&quot; data-step=&quot;1&quot;><h2>Draw stays · level <span id=&quot;capLvl2&quot; style=&quot;color:var(--accent)&quot;></span></h2>
         <div class=&quot;row&quot;><span class=&quot;hint&quot;>Stay</span><div class=&quot;seg&quot;><button id=&quot;sgSingle&quot; class=&quot;on&quot;>Single</button><button id=&quot;sgDouble&quot;>Double</button></div></div>
-        <div class=&quot;hint&quot; style=&quot;margin-top:2px&quot;><b style=&quot;color:#d9a022&quot;>━</b> single &amp;nbsp; <b style=&quot;color:#d23b3b&quot;>━</b><b style=&quot;color:#2563eb&quot;>━</b> double (red+blue)</div>
+        <div class=&quot;row&quot; style=&quot;margin-top:9px&quot;><span class=&quot;hint&quot;>Single colour</span><input type=&quot;color&quot; id=&quot;colSgl&quot; value=&quot;#d9a022&quot; class=&quot;cpick&quot;></div>
+        <div class=&quot;row&quot;><span class=&quot;hint&quot;>Double colours</span><span style=&quot;display:flex;gap:6px&quot;><input type=&quot;color&quot; id=&quot;colDblA&quot; value=&quot;#d23b3b&quot; class=&quot;cpick&quot;><input type=&quot;color&quot; id=&quot;colDblB&quot; value=&quot;#2563eb&quot; class=&quot;cpick&quot;></span></div>
         <button class=&quot;btn&quot; id=&quot;autoStay&quot; style=&quot;margin-top:6px&quot;>Auto corner stays</button>
         <button class=&quot;btn&quot; id=&quot;clrStay&quot; style=&quot;margin-top:6px&quot;>Clear this level</button>
       </div>
@@ -332,7 +325,7 @@ const LABEL={manhole:&quot;Manhole&quot;,vent:&quot;Air vent&quot;,nozzle:&quot;
 
 const S={cols:6,rows:3,height:3,az:36,pitch:56,zoom:1,panX:0,panY:0,
   cutaway:true,roof:true,footprint:false,dims:true,
-  editLvl:1,stayDbl:false,levels:{},levelsOn:{},full:true,
+  editLvl:1,stayDbl:false,levels:{},levelsOn:{},full:true,sgl:&quot;#d9a022&quot;,dblA:&quot;#d23b3b&quot;,dblB:&quot;#2563eb&quot;,
   items:[{id:&quot;i1&quot;,type:&quot;manhole&quot;,c:1,r:1.5,size:0.5},{id:&quot;i2&quot;,type:&quot;vent&quot;,c:4.5,r:1},{id:&quot;i3&quot;,type:&quot;nozzle&quot;,face:&quot;N&quot;,i:1,k:1,spot:&quot;center&quot;},{id:&quot;i4&quot;,type:&quot;ladder&quot;,face:&quot;E&quot;,pos:6}]};
 function initLevels(){for(let i=1;i<=S.height;i++){if(!S.levels[i])S.levels[i]={};if(!(i in S.levelsOn))S.levelsOn[i]=true;}Object.keys(S.levelsOn).forEach(k=>{if(+k>S.height){delete S.levelsOn[k];delete S.levels[k];}});if(S.editLvl>S.height)S.editLvl=S.height;}
 function segKey(a,b){const k1=a[0]+&quot;,&quot;+a[1],k2=b[0]+&quot;,&quot;+b[1];return k1<k2?k1+&quot;|&quot;+k2:k2+&quot;|&quot;+k1;}
@@ -345,7 +338,7 @@ const PLAN=document.getElementById(&quot;plan&quot;);let pV={OX:60,OY:48,CELL:60
 function planLayout(){const r=PLAN.getBoundingClientRect();pV.W=r.width||600;pV.H=r.height||400;const aw=pV.W-120,ah=pV.H-110;pV.CELL=Math.max(24,Math.min(84,Math.min(aw/S.cols,ah/S.rows)));pV.OX=(pV.W-pV.CELL*S.cols)/2;pV.OY=(pV.H-pV.CELL*S.rows)/2+6;}
 function nodeP(a){return{x:pV.OX+a[0]*pV.CELL,y:pV.OY+a[1]*pV.CELL};}
 function segLine(x1,y1,x2,y2,st,w){return `<line x1=&quot;${x1.toFixed(1)}&quot; y1=&quot;${y1.toFixed(1)}&quot; x2=&quot;${x2.toFixed(1)}&quot; y2=&quot;${y2.toFixed(1)}&quot; stroke=&quot;${st}&quot; stroke-width=&quot;${w}&quot; stroke-linecap=&quot;round&quot;/>`;}
-function stayP(a,b,dbl){const p=nodeP(a),q=nodeP(b),dx=q.x-p.x,dy=q.y-p.y,len=Math.hypot(dx,dy)||1,ox=-dy/len,oy=dx/len;if(dbl){return segLine(p.x+ox*2.5,p.y+oy*2.5,q.x+ox*2.5,q.y+oy*2.5,COL.staySgl,3)+segLine(p.x-ox*2.5,p.y-oy*2.5,q.x-ox*2.5,q.y-oy*2.5,COL.stayDbl,3);}return segLine(p.x,p.y,q.x,q.y,COL.stay,4.4);}
+function stayP(a,b,dbl){const p=nodeP(a),q=nodeP(b),dx=q.x-p.x,dy=q.y-p.y,len=Math.hypot(dx,dy)||1,ox=-dy/len,oy=dx/len;if(dbl){return segLine(p.x+ox*2.5,p.y+oy*2.5,q.x+ox*2.5,q.y+oy*2.5,S.dblA,3)+segLine(p.x-ox*2.5,p.y-oy*2.5,q.x-ox*2.5,q.y-oy*2.5,S.dblB,3);}return segLine(p.x,p.y,q.x,q.y,S.sgl,4.4);}
 function drawPlan(){planLayout();const{OX,OY,CELL}=pV,c=S.cols,r=S.rows;let s=&quot;&quot;;
   for(let i=0;i<c;i++)for(let j=0;j<r;j++)s+=`<rect x=&quot;${OX+i*CELL}&quot; y=&quot;${OY+j*CELL}&quot; width=&quot;${CELL}&quot; height=&quot;${CELL}&quot; fill=&quot;#fff&quot; stroke=&quot;${COL.grid}&quot; stroke-width=&quot;1&quot;/>`;
   s+=`<rect x=&quot;${OX}&quot; y=&quot;${OY}&quot; width=&quot;${c*CELL}&quot; height=&quot;${r*CELL}&quot; fill=&quot;none&quot; stroke=&quot;${COL.ink}&quot; stroke-width=&quot;2.4&quot;/>`;
@@ -382,7 +375,7 @@ function visualRadiusPx(f){const ppf=pxPerFt();if(f.type===&quot;manhole&quot;)r
 function setRadiusFt(f,radFt){if(f.type===&quot;manhole&quot;)f.size=Math.max(0.25,Math.min(1.3,radFt/PANEL_FT));else if(f.type===&quot;vent&quot;)f.dia=Math.max(0.4,Math.min(3.5,2*radFt));else if(f.type===&quot;nozzle&quot;)f.dia=Math.max(0.2,Math.min(2,2*radFt));else if(f.type===&quot;ladder&quot;)f.wid=Math.max(0.8,Math.min(3,2*radFt));}
 function L3(a,b,st,w,o){return `<line x1=&quot;${a.x.toFixed(1)}&quot; y1=&quot;${a.y.toFixed(1)}&quot; x2=&quot;${b.x.toFixed(1)}&quot; y2=&quot;${b.y.toFixed(1)}&quot; stroke=&quot;${st}&quot; stroke-width=&quot;${w}&quot; ${o!=null?`opacity=&quot;${o}&quot;`:&quot;&quot;} stroke-linecap=&quot;round&quot;/>`;}
 function Q3(p,fill,op,stroke,sw,ex){return `<polygon points=&quot;${p.map(q=>`${q.x.toFixed(1)},${q.y.toFixed(1)}`).join(&quot; &quot;)}&quot; fill=&quot;${fill}&quot; ${op!=null?`fill-opacity=&quot;${op}&quot;`:&quot;&quot;} ${stroke?`stroke=&quot;${stroke}&quot; stroke-width=&quot;${sw||1}&quot;`:&quot;&quot;} ${ex||&quot;&quot;}/>`;}
-function stay3(a,b,dbl){const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1,ox=-dy/len,oy=dx/len;if(dbl){return L3({x:a.x+ox*2.6,y:a.y+oy*2.6},{x:b.x+ox*2.6,y:b.y+oy*2.6},COL.staySgl,2.6)+L3({x:a.x-ox*2.6,y:a.y-oy*2.6},{x:b.x-ox*2.6,y:b.y-oy*2.6},COL.stayDbl,2.6);}return L3(a,b,COL.stay,3.6);}
+function stay3(a,b,dbl){const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1,ox=-dy/len,oy=dx/len;if(dbl){return L3({x:a.x+ox*2.6,y:a.y+oy*2.6},{x:b.x+ox*2.6,y:b.y+oy*2.6},S.dblA,2.6)+L3({x:a.x-ox*2.6,y:a.y-oy*2.6},{x:b.x-ox*2.6,y:b.y-oy*2.6},S.dblB,2.6);}return L3(a,b,S.sgl,3.6);}
 function nearCorner(){const cs=[[0,0],[S.cols,0],[S.cols,S.rows],[0,S.rows]];let b=0,bay=-1e9;cs.forEach((c,i)=>{const ay=proj(c[0],c[1],0).ay;if(ay>bay){bay=ay;b=i;}});return cs[b];}
 function nozzlePt(n){const z=n.spot===&quot;bottom&quot;?n.k+0.12:n.k+0.5;if(n.face===&quot;N&quot;)return{c:n.i+0.5,r:0,z,nx:0,ny:-1};if(n.face===&quot;S&quot;)return{c:n.i+0.5,r:S.rows,z,nx:0,ny:1};if(n.face===&quot;W&quot;)return{c:0,r:n.i+0.5,z,nx:-1,ny:0};return{c:S.cols,r:n.i+0.5,z,nx:1,ny:0};}
 function nearestNozzle(px,py){let best=null,bd=1e18;const faces=[[&quot;N&quot;,S.cols],[&quot;S&quot;,S.cols],[&quot;W&quot;,S.rows],[&quot;E&quot;,S.rows]];for(const[f,len]of faces)for(let i=0;i<len;i++)for(let k=0;k<S.height;k++)for(const spot of[&quot;center&quot;,&quot;bottom&quot;]){const n={face:f,i,k,spot},p=nozzlePt(n),sc=proj(p.c+p.nx*0.45,p.r+p.ny*0.45,p.z),d=(sc.x-px)**2+(sc.y-py)**2;if(d<bd){bd=d;best=n;}}return best;}
@@ -488,6 +481,7 @@ document.getElementById(&quot;sgDouble&quot;).addEventListener(&quot;click&quot;
 function sgsync(){document.getElementById(&quot;sgSingle&quot;).classList.toggle(&quot;on&quot;,!S.stayDbl);document.getElementById(&quot;sgDouble&quot;).classList.toggle(&quot;on&quot;,S.stayDbl);}
 document.getElementById(&quot;autoStay&quot;).addEventListener(&quot;click&quot;,()=>{commit();autoCorners(S.editLvl);drawPlan();render();});
   document.getElementById(&quot;addLvl&quot;).addEventListener(&quot;click&quot;,addLevel);
+  [&quot;colSgl&quot;,&quot;colDblA&quot;,&quot;colDblB&quot;].forEach((id,k)=>{const el=document.getElementById(id);if(el)el.addEventListener(&quot;input&quot;,e=>{S[[&quot;sgl&quot;,&quot;dblA&quot;,&quot;dblB&quot;][k]]=e.target.value;drawPlan();render();});});
 document.getElementById(&quot;clrStay&quot;).addEventListener(&quot;click&quot;,()=>{commit();S.levels[S.editLvl]={};drawPlan();render();});
 function setView(az,p,w){S.az=az;S.pitch=p;[&quot;vIso&quot;,&quot;vFront&quot;,&quot;vTop&quot;].forEach(i=>document.getElementById(i).classList.toggle(&quot;on&quot;,i===w));render();}
 document.getElementById(&quot;vIso&quot;).onclick=()=>setView(36,56,&quot;vIso&quot;);document.getElementById(&quot;vFront&quot;).onclick=()=>setView(0,80,&quot;vFront&quot;);document.getElementById(&quot;vTop&quot;).onclick=()=>setView(0,10,&quot;vTop&quot;);
@@ -606,11 +600,17 @@ function renderBOM(){
 [[&quot;r_w15&quot;,&quot;w15&quot;],[&quot;r_w30&quot;,&quot;w30&quot;],[&quot;r_rmKg&quot;,&quot;rmKg&quot;],[&quot;r_boltsPanel&quot;,&quot;boltsPanel&quot;],[&quot;r_rmBolt&quot;,&quot;rmBolt&quot;],[&quot;r_stayKg&quot;,&quot;stayKg&quot;],[&quot;r_rollM&quot;,&quot;rollM&quot;],[&quot;r_rmRoll&quot;,&quot;rmRoll&quot;],[&quot;r_fb&quot;,&quot;fb&quot;]].forEach(([id,k])=>{const el=document.getElementById(id);el.value=S.rate[k];el.addEventListener(&quot;input&quot;,()=>{S.rate[k]=parseFloat(el.value)||0;if(S.step===3)renderBOM();});});
 
 /* ---------- export / print ---------- */
+function jtPrintCSS(){return '@page{size:A4;margin:11mm}*{box-sizing:border-box}body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#16202b;margin:0}.frame{border:1.6px solid #16202b}.hd{display:flex;align-items:center;gap:11px;padding:9px 13px;border-bottom:1.6px solid #16202b}.hd .mk{width:33px;height:33px;border-radius:8px;background:linear-gradient(135deg,#1f4e79,#2a64a0);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}.hd .co{font-weight:800;font-size:14.5px;letter-spacing:.4px}.hd .ad{font-size:9.5px;color:#5a6675}.hd .dt{margin-left:auto;text-align:right;font-size:10.5px;font-weight:700;color:#1f4e79;border:1px solid #d6e3f2;background:#eef4fb;border-radius:6px;padding:5px 9px}.title{text-align:center;font-weight:800;font-size:14.5px;letter-spacing:.6px;padding:7px;border-bottom:1.6px solid #16202b;text-transform:uppercase}.bd{padding:13px}.bd svg{max-width:100%;display:block;margin:0 auto}table{width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:10px}th,td{border:1px solid #cfd8e3;padding:5px 8px;text-align:left}th{background:#eef3f9}.n{text-align:right}input{border:0;background:transparent;width:58px;text-align:right;font:inherit}.sec td{background:#eef3f9;font-weight:700}.grand td{background:#1f4e79;color:#fff;font-weight:700}.tb{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.6px solid #16202b}.tb .c{border-right:1px solid #cfd8e3;border-bottom:1px solid #cfd8e3;padding:5px 9px;font-size:10.5px}.tb .c b{display:block;color:#46525f;font-size:8.5px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1px}.ft{text-align:center;padding:6px;border-top:1px solid #cfd8e3;font-size:9.5px;color:#7a8696}';}
+function jtSheet(title,body,fields){var d=new Date().toLocaleDateString();
+  return '<div class=&quot;frame&quot;><div class=&quot;hd&quot;><div class=&quot;mk&quot;>J</div><div><div class=&quot;co&quot;>JUTARAMA INDUSTRIES (M) SDN BHD</div><div class=&quot;ad&quot;>19, Jalan Mega 2/1, Kawasan Perindustrian Mega 2, 43500 Semenyih, Selangor Darul Ehsan · jutarama@gmail.com</div></div><div class=&quot;dt&quot;>DATE<br>'+d+'</div></div><div class=&quot;title&quot;>'+title+'</div><div class=&quot;bd&quot;>'+body+'</div><div class=&quot;tb&quot;>'+fields.map(function(f){return '<div class=&quot;c&quot;><b>'+f[0]+'</b>'+(f[1]||&quot;—&quot;)+'</div>';}).join(&quot;&quot;)+'</div><div class=&quot;ft&quot;>System-generated drawing · JUTARAMA Tank Studio</div></div>';}
 function exportReport(){
   const svg='<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;'+W+'&quot; height=&quot;'+H+'&quot; viewBox=&quot;0 0 '+W+' '+H+'&quot;><rect width=&quot;'+W+'&quot; height=&quot;'+H+'&quot; fill=&quot;#fff&quot;/>'+SCENE.innerHTML+'</svg>';
   const sheet=document.querySelector(&quot;#bomSheet .sheet&quot;).cloneNode(true);const act=sheet.querySelector(&quot;#bomActions&quot;);if(act)act.remove();
+  const b=bom();const cap=(b.useL>=1000?(b.useL/1000).toFixed(1)+&quot; m³&quot;:Math.round(b.useL)+&quot; L&quot;);
+  const body='<div style=&quot;border:1px solid #cfd8e3;border-radius:8px;padding:6px;margin-bottom:12px&quot;>'+svg+'</div>'+sheet.innerHTML;
+  const fields=[[&quot;Tank Size&quot;,(S.cols*4)+&quot;' x &quot;+(S.rows*4)+&quot;' x &quot;+(S.height*4)+&quot;'(H)&quot;],[&quot;Working Capacity&quot;,cap],[&quot;Finishes&quot;,&quot;HDG Tank&quot;],[&quot;Sheet&quot;,&quot;BOM 1/1&quot;]];
   const w=window.open(&quot;&quot;,&quot;_blank&quot;);if(!w)return;
-  w.document.write('<!doctype html><html><head><title>Tank BOM '+(S.cols*4)+'x'+(S.rows*4)+'x'+(S.height*4)+'</title><style>body{font-family:Inter,system-ui,sans-serif;color:#18222e;margin:22px}.ga{border:1px solid #e3e8f1;border-radius:10px;padding:8px;margin:0 0 14px}svg{max-width:100%}table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:12px}th,td{border:1px solid #e3e8f1;padding:5px 8px;text-align:left}th{background:#f4f7fb}.n{text-align:right}input{border:0;background:transparent;width:60px;text-align:right}.sec td{background:#eef3f9;font-weight:700}.grand td{background:#1f4e79;color:#fff;font-weight:700}</style></head><body><div class=&quot;ga&quot;>'+svg+'</div>'+sheet.innerHTML+'<scr'+'ipt>window.onload=function(){window.print();}</scr'+'ipt></body></html>');
+  w.document.write('<!doctype html><html><head><title>Tank BOM '+(S.cols*4)+'x'+(S.rows*4)+'x'+(S.height*4)+'</title><style>'+jtPrintCSS()+'</style></head><body>'+jtSheet(&quot;Bill of Materials &amp;amp; Tank Drawing&quot;,body,fields)+'<scr'+'ipt>window.onload=function(){window.print();}</scr'+'ipt></body></html>');
   w.document.close();
 }
 
@@ -618,8 +618,8 @@ function exportReport(){
 const KEY_P=&quot;jt_studio_projects&quot;,KEY_T=&quot;jt_studio_templates&quot;;
 function readStore(k){try{return JSON.parse(localStorage.getItem(k)||&quot;[]&quot;);}catch(e){return [];}}
 function writeStore(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
-function serialize(){return {cols:S.cols,rows:S.rows,height:S.height,levels:S.levels,levelsOn:S.levelsOn,full:S.full,items:S.items,rate:S.rate,price:S.price,qty:S.qty,roof:S.roof,cutaway:S.cutaway,footprint:S.footprint,dims:S.dims};}
-function applyState(o){S.cols=o.cols;S.rows=o.rows;S.height=o.height;S.levels=o.levels||{};S.levelsOn=o.levelsOn||{};S.full=o.full!==false;S.items=o.items||[];S.rate=Object.assign({w15:21.15,w30:42.3,rmKg:6.5,boltsPanel:64,rmBolt:0.85,stayKg:9,fb:1,rollM:10,rmRoll:22.5},o.rate||{});S.price=Object.assign({man:0,p15:0,p30:0,cleatA:0,cleatB:0,cleatC:0,cleatC1:0,trussPipe:0,trussAngle:0,stay:0,but340:0,but545:0,boltM14:0,washM14:0,bolt58:0,wash58:0,bolt38a:0,bolt38b:0,wash38:0,ladderExt:0,ladderInt:0,ladderWli:0,vent:0},o.price||{});S.qty=Object.assign({cleatA:0,cleatB:0,cleatC:0,cleatC1:0,truss1:0,truss2:0},o.qty||{});[&quot;roof&quot;,&quot;cutaway&quot;,&quot;footprint&quot;,&quot;dims&quot;].forEach(k=>{if(k in o)S[k]=o[k];});
+function serialize(){return {cols:S.cols,rows:S.rows,height:S.height,levels:S.levels,levelsOn:S.levelsOn,full:S.full,sgl:S.sgl,dblA:S.dblA,dblB:S.dblB,items:S.items,rate:S.rate,price:S.price,qty:S.qty,roof:S.roof,cutaway:S.cutaway,footprint:S.footprint,dims:S.dims};}
+function applyState(o){S.cols=o.cols;S.rows=o.rows;S.height=o.height;S.levels=o.levels||{};S.levelsOn=o.levelsOn||{};S.full=o.full!==false;S.sgl=o.sgl||&quot;#d9a022&quot;;S.dblA=o.dblA||&quot;#d23b3b&quot;;S.dblB=o.dblB||&quot;#2563eb&quot;;[&quot;colSgl&quot;,&quot;colDblA&quot;,&quot;colDblB&quot;].forEach((id,k)=>{const el=document.getElementById(id);if(el)el.value=[S.sgl,S.dblA,S.dblB][k];});S.items=o.items||[];S.rate=Object.assign({w15:21.15,w30:42.3,rmKg:6.5,boltsPanel:64,rmBolt:0.85,stayKg:9,fb:1,rollM:10,rmRoll:22.5},o.rate||{});S.price=Object.assign({man:0,p15:0,p30:0,cleatA:0,cleatB:0,cleatC:0,cleatC1:0,trussPipe:0,trussAngle:0,stay:0,but340:0,but545:0,boltM14:0,washM14:0,bolt58:0,wash58:0,bolt38a:0,bolt38b:0,wash38:0,ladderExt:0,ladderInt:0,ladderWli:0,vent:0},o.price||{});S.qty=Object.assign({cleatA:0,cleatB:0,cleatC:0,cleatC1:0,truss1:0,truss2:0},o.qty||{});[&quot;roof&quot;,&quot;cutaway&quot;,&quot;footprint&quot;,&quot;dims&quot;].forEach(k=>{if(k in o)S[k]=o[k];});
   initLevels();clampSize();
   [&quot;cutChk&quot;,&quot;cutaway&quot;],[&quot;roofChk&quot;,&quot;roof&quot;],[&quot;footChk&quot;,&quot;footprint&quot;],[&quot;dimChk&quot;,&quot;dims&quot;];
   document.getElementById(&quot;cutChk&quot;).checked=S.cutaway;document.getElementById(&quot;roofChk&quot;).checked=S.roof;document.getElementById(&quot;footChk&quot;).checked=S.footprint;document.getElementById(&quot;dimChk&quot;).checked=S.dims;document.getElementById(&quot;fullChk&quot;).checked=S.full;
@@ -664,7 +664,7 @@ document.getElementById(&quot;stepTab3&quot;).addEventListener(&quot;click&quot;
 /* ---------- professional tools: history, selection, export ---------- */
 S.sel=null;
 let UNDO=[],REDO=[];
-function snap(){return JSON.stringify({cols:S.cols,rows:S.rows,height:S.height,levels:S.levels,levelsOn:S.levelsOn,full:S.full,items:S.items,rate:S.rate,price:S.price,qty:S.qty,roof:S.roof,cutaway:S.cutaway,footprint:S.footprint,dims:S.dims});}
+function snap(){return JSON.stringify({cols:S.cols,rows:S.rows,height:S.height,levels:S.levels,levelsOn:S.levelsOn,full:S.full,sgl:S.sgl,dblA:S.dblA,dblB:S.dblB,items:S.items,rate:S.rate,price:S.price,qty:S.qty,roof:S.roof,cutaway:S.cutaway,footprint:S.footprint,dims:S.dims});}
 function commit(){UNDO.push(snap());if(UNDO.length>60)UNDO.shift();REDO=[];updUndo();}
 function applySnap(str){applyState(JSON.parse(str));S.sel=null;renderProps();}
 function doUndo(){if(!UNDO.length)return;REDO.push(snap());applySnap(UNDO.pop());updUndo();}
@@ -717,21 +717,37 @@ requestAnimationFrame(()=>{const r=SCENE.getBoundingClientRect();W=r.width||600;
 </script>
 </body>
 </html>
-"></iframe>
-</div></div>
-<div class="jtOv" id="jtOvNozzle"><div class="jtCard">
-  <div class="jtBar"><div class="lg" style="background:linear-gradient(135deg,#2f6f57,#3a8c6e)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg></div><div><div class="tt">Typical Piping Opening Information</div><div class="sb">fold-out walls · mark inlet / outlet / overflow / scour</div></div>
-  <span class="jtChip" id="jtChipNozzle"><i></i> independent</span><button class="jtClose" data-cl="jtOvNozzle">&#10005;</button></div>
-  <iframe class="jtFrame" id="jtFrNozzle" title="Piping Openings" srcdoc="<!doctype html>
-<html lang=&quot;en&quot;>
+"></iframe></div></div><div class="jtOv" id="jtOvDraw"><div class="jtCard"><div class="jtBar"><div class="lg" style="background:linear-gradient(135deg,#2f6f57,#3a8c6e)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3h10l4 4v14H5z"/><path d="M9 8h4M9 12h6M9 16h6"/></svg></div><div><div class="tt">Tank Drawings</div><div class="sb">Piping openings &amp; concrete plinth</div></div><span class="jtChip" id="jtChipDraw"><i></i> independent</span><button class="jtClose" data-cl="jtOvDraw">&#10005;</button></div><iframe class="jtFrame" id="jtFrDraw" title="Tank Drawings" srcdoc="<!doctype html><html lang=&quot;en&quot;><head><meta charset=&quot;utf-8&quot;/><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/><title>Tank Drawings</title>
+<style>
+ html,body{margin:0;height:100%}
+ .wrap{display:flex;flex-direction:column;height:100vh;height:100dvh;font-family:Inter,system-ui,-apple-system,&quot;Segoe UI&quot;,sans-serif}
+ .tabs{display:flex;align-items:center;gap:10px;background:linear-gradient(180deg,#fff,#f4f8fc);border-bottom:1px solid #e6eaf1;padding:9px 14px}
+ .seg{display:flex;border:1px solid #cfd7e3;border-radius:11px;overflow:hidden;box-shadow:0 1px 2px rgba(16,24,37,.04)}
+ .seg button{border:0;background:#fff;padding:9px 16px;font:700 13px Inter;color:#5a6675;cursor:pointer;display:flex;align-items:center;gap:8px;transition:.14s}
+ .seg button:hover{background:#f1f5fa;color:#1f4e79}
+ .seg button.on{background:linear-gradient(135deg,#1f4e79,#2a64a0);color:#fff}
+ .seg button.on svg{color:#fff}
+ .hint{margin-left:auto;font-size:11px;color:#93a0af}
+ .frames{flex:1;position:relative;min-height:0;background:#eef2f8}
+ .frames iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+ .frames iframe.hide{visibility:hidden;pointer-events:none}
+</style></head><body>
+<div class=&quot;wrap&quot;>
+  <div class=&quot;tabs&quot;><div class=&quot;seg&quot;>
+    <button id=&quot;tabP&quot; class=&quot;on&quot;><svg width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot;><circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;7&quot;/><circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;2.6&quot;/></svg> Piping Openings</button>
+    <button id=&quot;tabL&quot;><svg width=&quot;15&quot; height=&quot;15&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot;><rect x=&quot;3&quot; y=&quot;9&quot; width=&quot;18&quot; height=&quot;11&quot;/><path d=&quot;M3 13h18M9 9v11M15 9v11&quot;/></svg> Concrete Plinth</button>
+  </div><span class=&quot;hint&quot;>one sheet set · same tank size</span></div>
+  <div class=&quot;frames&quot;>
+    <iframe id=&quot;fP&quot; title=&quot;Piping Openings&quot; srcdoc=&quot;<!doctype html>
+<html lang=&amp;quot;en&amp;quot;>
 <head>
-<meta charset=&quot;utf-8&quot; />
-<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; />
+<meta charset=&amp;quot;utf-8&amp;quot; />
+<meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1&amp;quot; />
 <title>Piping Opening Information</title>
 <style>
   :root{--ink:#18222e;--sub:#5a6675;--faint:#93a0af;--line:#e6eaf1;--line2:#cfd7e3;--accent:#1f4e79;--soft:#eaf1fa}
   *{box-sizing:border-box}html,body{margin:0;height:100%}
-  body{font-family:&quot;Inter&quot;,system-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;height:100%;background:radial-gradient(1200px 600px at 50% -10%,#f4f7fb,rgba(244,247,251,0) 60%),linear-gradient(180deg,#eef2f8,#e6ebf2)}
+  body{font-family:&amp;quot;Inter&amp;quot;,system-ui,-apple-system,&amp;quot;Segoe UI&amp;quot;,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;height:100%;background:radial-gradient(1200px 600px at 50% -10%,#f4f7fb,rgba(244,247,251,0) 60%),linear-gradient(180deg,#eef2f8,#e6ebf2)}
   .app{display:flex;flex-direction:column;height:100vh;height:100dvh}
   header{display:flex;align-items:center;gap:12px;padding:11px 18px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.78);backdrop-filter:blur(8px)}
   header .logo{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--accent),#2a64a0);box-shadow:0 4px 12px rgba(31,78,121,.3)}
@@ -769,49 +785,53 @@ requestAnimationFrame(()=>{const r=SCENE.getBoundingClientRect();W=r.width||600;
 </style>
 </head>
 <body>
-<div class=&quot;app&quot;>
+<div class=&amp;quot;app&amp;quot;>
   <header>
-    <button class=&quot;menuBtn sb&quot; id=&quot;menuBtn&quot;>☰</button>
-    <div class=&quot;logo&quot;><svg width=&quot;17&quot; height=&quot;17&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;><circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;7&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot;/><circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;2.6&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.6&quot;/></svg></div>
-    <div><h1>TYPICAL PIPING OPENING INFORMATION</h1><div class=&quot;sub&quot;>pick a type, then click a wall to drop · drag to move · click to edit</div></div>
-    <span class=&quot;size&quot; id=&quot;sizeChip&quot;></span>
+    <button class=&amp;quot;menuBtn sb&amp;quot; id=&amp;quot;menuBtn&amp;quot;>☰</button>
+    <div class=&amp;quot;logo&amp;quot;><svg width=&amp;quot;17&amp;quot; height=&amp;quot;17&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;><circle cx=&amp;quot;12&amp;quot; cy=&amp;quot;12&amp;quot; r=&amp;quot;7&amp;quot; stroke=&amp;quot;currentColor&amp;quot; stroke-width=&amp;quot;1.8&amp;quot;/><circle cx=&amp;quot;12&amp;quot; cy=&amp;quot;12&amp;quot; r=&amp;quot;2.6&amp;quot; stroke=&amp;quot;currentColor&amp;quot; stroke-width=&amp;quot;1.6&amp;quot;/></svg></div>
+    <div><h1>TYPICAL PIPING OPENING INFORMATION</h1><div class=&amp;quot;sub&amp;quot;>pick a type, then click a wall to drop · drag to move · click to edit</div></div>
+    <span class=&amp;quot;size&amp;quot; id=&amp;quot;sizeChip&amp;quot;></span>
   </header>
   <main>
-    <aside class=&quot;rail&quot; id=&quot;rail&quot;>
-      <div class=&quot;panel&quot;><h2>Tank size (panels · ft)</h2>
-        <div class=&quot;step row&quot;><b>Length</b><div class=&quot;step&quot;><button class=&quot;sb&quot; data-d=&quot;cols&quot; data-v=&quot;-1&quot;>−</button><span class=&quot;v&quot; id=&quot;colsV&quot;></span><button class=&quot;sb&quot; data-d=&quot;cols&quot; data-v=&quot;1&quot;>+</button></div></div>
-        <div class=&quot;step row&quot;><b>Width</b><div class=&quot;step&quot;><button class=&quot;sb&quot; data-d=&quot;rows&quot; data-v=&quot;-1&quot;>−</button><span class=&quot;v&quot; id=&quot;rowsV&quot;></span><button class=&quot;sb&quot; data-d=&quot;rows&quot; data-v=&quot;1&quot;>+</button></div></div>
-        <div class=&quot;step row&quot;><b>Height</b><div class=&quot;step&quot;><button class=&quot;sb&quot; data-d=&quot;height&quot; data-v=&quot;-1&quot;>−</button><span class=&quot;v&quot; id=&quot;heightV&quot;></span><button class=&quot;sb&quot; data-d=&quot;height&quot; data-v=&quot;1&quot;>+</button></div></div>
+    <aside class=&amp;quot;rail&amp;quot; id=&amp;quot;rail&amp;quot;>
+      <div class=&amp;quot;panel&amp;quot;><h2>Tank size (panels · ft)</h2>
+        <div class=&amp;quot;step row&amp;quot;><b>Length</b><div class=&amp;quot;step&amp;quot;><button class=&amp;quot;sb&amp;quot; data-d=&amp;quot;cols&amp;quot; data-v=&amp;quot;-1&amp;quot;>−</button><span class=&amp;quot;v&amp;quot; id=&amp;quot;colsV&amp;quot;></span><button class=&amp;quot;sb&amp;quot; data-d=&amp;quot;cols&amp;quot; data-v=&amp;quot;1&amp;quot;>+</button></div></div>
+        <div class=&amp;quot;step row&amp;quot;><b>Width</b><div class=&amp;quot;step&amp;quot;><button class=&amp;quot;sb&amp;quot; data-d=&amp;quot;rows&amp;quot; data-v=&amp;quot;-1&amp;quot;>−</button><span class=&amp;quot;v&amp;quot; id=&amp;quot;rowsV&amp;quot;></span><button class=&amp;quot;sb&amp;quot; data-d=&amp;quot;rows&amp;quot; data-v=&amp;quot;1&amp;quot;>+</button></div></div>
+        <div class=&amp;quot;step row&amp;quot;><b>Height</b><div class=&amp;quot;step&amp;quot;><button class=&amp;quot;sb&amp;quot; data-d=&amp;quot;height&amp;quot; data-v=&amp;quot;-1&amp;quot;>−</button><span class=&amp;quot;v&amp;quot; id=&amp;quot;heightV&amp;quot;></span><button class=&amp;quot;sb&amp;quot; data-d=&amp;quot;height&amp;quot; data-v=&amp;quot;1&amp;quot;>+</button></div></div>
       </div>
-      <div class=&quot;panel&quot;><h2>Opening type &amp;amp; size (φ)</h2>
-        <div class=&quot;types&quot; id=&quot;types&quot;></div>
+      <div class=&amp;quot;panel&amp;quot;><h2>Opening type &amp;amp;amp; size (φ)</h2>
+        <div class=&amp;quot;types&amp;quot; id=&amp;quot;types&amp;quot;></div>
       </div>
-      <div class=&quot;panel&quot;><h2>Actions</h2>
-        <button class=&quot;btn&quot; id=&quot;clrBtn&quot;>Clear all openings</button>
-        <button class=&quot;btn&quot; id=&quot;pngBtn&quot; style=&quot;margin-top:6px&quot;>⬇ Export PNG</button>
-        <button class=&quot;btn&quot; id=&quot;printBtn&quot; style=&quot;margin-top:6px&quot;>🖨️ Print form</button>
-        <p class=&quot;tip&quot; style=&quot;margin-top:9px&quot;>The four walls are folded out around the floor plan. Click a wall to place the selected opening; drag it anywhere; click it to set its size (φ) or remove.</p>
+      <div class=&amp;quot;panel&amp;quot;><h2>Actions</h2>
+        <button class=&amp;quot;btn&amp;quot; id=&amp;quot;clrBtn&amp;quot;>Clear all openings</button>
+        <button class=&amp;quot;btn&amp;quot; id=&amp;quot;pngBtn&amp;quot; style=&amp;quot;margin-top:6px&amp;quot;>⬇ Export PNG</button>
+        <button class=&amp;quot;btn&amp;quot; id=&amp;quot;printBtn&amp;quot; style=&amp;quot;margin-top:6px&amp;quot;>🖨️ Print form</button>
+        <p class=&amp;quot;tip&amp;quot; style=&amp;quot;margin-top:9px&amp;quot;>The four walls are folded out around the floor plan. Click a wall to place the selected opening; drag it anywhere; click it to set its size (φ) or remove.</p>
       </div>
     </aside>
-    <div class=&quot;stage&quot; id=&quot;stage&quot;><svg id=&quot;net&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;></svg></div>
+    <div class=&amp;quot;stage&amp;quot; id=&amp;quot;stage&amp;quot;><svg id=&amp;quot;net&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot;></svg></div>
   </main>
 </div>
 
 <script>
 const TYPES={
-  inlet:{name:&quot;Inlet&quot;,tag:&quot;IN&quot;,color:&quot;#1f6fb2&quot;},
-  outlet:{name:&quot;Outlet&quot;,tag:&quot;OUT&quot;,color:&quot;#2f8f57&quot;},
-  overflow:{name:&quot;Overflow&quot;,tag:&quot;OF&quot;,color:&quot;#cf8a1f&quot;},
-  scour:{name:&quot;Scour pit&quot;,tag:&quot;SP&quot;,color:&quot;#b5453a&quot;}
+  inlet:{name:&amp;quot;Inlet&amp;quot;,tag:&amp;quot;IN&amp;quot;,color:&amp;quot;#1f6fb2&amp;quot;},
+  outlet:{name:&amp;quot;Outlet&amp;quot;,tag:&amp;quot;OUT&amp;quot;,color:&amp;quot;#2f8f57&amp;quot;},
+  overflow:{name:&amp;quot;Overflow&amp;quot;,tag:&amp;quot;OF&amp;quot;,color:&amp;quot;#cf8a1f&amp;quot;},
+  scour:{name:&amp;quot;Scour pit&amp;quot;,tag:&amp;quot;SP&amp;quot;,color:&amp;quot;#b5453a&amp;quot;}
 };
-const ORDER=[&quot;inlet&quot;,&quot;outlet&quot;,&quot;overflow&quot;,&quot;scour&quot;];
-const S={cols:3,rows:2,height:1,items:[],sel:null,active:&quot;inlet&quot;,dia:{inlet:&quot;&quot;,outlet:&quot;&quot;,overflow:&quot;&quot;,scour:&quot;&quot;}};
+const ORDER=[&amp;quot;inlet&amp;quot;,&amp;quot;outlet&amp;quot;,&amp;quot;overflow&amp;quot;,&amp;quot;scour&amp;quot;];
+const S={cols:3,rows:2,height:1,items:[],sel:null,active:&amp;quot;inlet&amp;quot;,dia:{inlet:&amp;quot;&amp;quot;,outlet:&amp;quot;&amp;quot;,overflow:&amp;quot;&amp;quot;,scour:&amp;quot;&amp;quot;}};
 let drag=null;
 const round1=v=>Math.round(v*10)/10;
-const esc=s=>(s||&quot;&quot;).replace(/&amp;/g,&quot;&amp;amp;&quot;).replace(/</g,&quot;&amp;lt;&quot;).replace(/&quot;/g,&quot;&amp;quot;&quot;);
+const esc=s=>(s||&amp;quot;&amp;quot;).replace(/&amp;amp;/g,&amp;quot;&amp;amp;amp;&amp;quot;).replace(/</g,&amp;quot;&amp;amp;lt;&amp;quot;).replace(/&amp;quot;/g,&amp;quot;&amp;amp;quot;&amp;quot;);
+function jtPrintCSS(){return '@page{size:A4;margin:11mm}*{box-sizing:border-box}body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#16202b;margin:0}.frame{border:1.6px solid #16202b}.hd{display:flex;align-items:center;gap:11px;padding:9px 13px;border-bottom:1.6px solid #16202b}.hd .mk{width:33px;height:33px;border-radius:8px;background:linear-gradient(135deg,#1f4e79,#2a64a0);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}.hd .co{font-weight:800;font-size:14.5px;letter-spacing:.4px}.hd .ad{font-size:9.5px;color:#5a6675}.hd .dt{margin-left:auto;text-align:right;font-size:10.5px;font-weight:700;color:#1f4e79;border:1px solid #d6e3f2;background:#eef4fb;border-radius:6px;padding:5px 9px}.title{text-align:center;font-weight:800;font-size:14.5px;letter-spacing:.6px;padding:7px;border-bottom:1.6px solid #16202b;text-transform:uppercase}.bd{padding:13px}.bd svg{max-width:100%;display:block;margin:0 auto}table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:10px}th,td{border:1px solid #cfd8e3;padding:5px 8px;text-align:left}th{background:#eef3f9}.tb{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.6px solid #16202b}.tb .c{border-right:1px solid #cfd8e3;border-bottom:1px solid #cfd8e3;padding:5px 9px;font-size:10.5px}.tb .c b{display:block;color:#46525f;font-size:8.5px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1px}.ft{text-align:center;padding:6px;border-top:1px solid #cfd8e3;font-size:9.5px;color:#7a8696}';}
+function jtSheet(title,body,fields){var d=new Date().toLocaleDateString();
+  return '<div class=&amp;quot;frame&amp;quot;><div class=&amp;quot;hd&amp;quot;><div class=&amp;quot;mk&amp;quot;>J</div><div><div class=&amp;quot;co&amp;quot;>JUTARAMA INDUSTRIES (M) SDN BHD</div><div class=&amp;quot;ad&amp;quot;>19, Jalan Mega 2/1, Kawasan Perindustrian Mega 2, 43500 Semenyih, Selangor Darul Ehsan · jutarama@gmail.com</div></div><div class=&amp;quot;dt&amp;quot;>DATE<br>'+d+'</div></div><div class=&amp;quot;title&amp;quot;>'+title+'</div><div class=&amp;quot;bd&amp;quot;>'+body+'</div><div class=&amp;quot;tb&amp;quot;>'+fields.map(function(f){return '<div class=&amp;quot;c&amp;quot;><b>'+f[0]+'</b>'+(f[1]||&amp;quot;—&amp;quot;)+'</div>';}).join(&amp;quot;&amp;quot;)+'</div><div class=&amp;quot;ft&amp;quot;>System-generated drawing · JUTARAMA Tank Studio</div></div>';}
+
 
 function layout(){
-  const st=document.getElementById(&quot;stage&quot;);
+  const st=document.getElementById(&amp;quot;stage&amp;quot;);
   const availW=(st.clientWidth||720)-36, availH=(st.clientHeight||540)-30;
   const L=S.cols,W=S.rows,H=S.height,gw=L+2*H,gh=W+2*H;
   let cell=Math.min(availW/gw,availH/gh);cell=Math.max(20,Math.min(78,cell));
@@ -827,150 +847,367 @@ function flaps(g){const{L,W,H,cell,OX,OY}=g;return{
   floor:{x:OX+H*cell,     y:OY+H*cell,     w:L*cell, h:W*cell}
 };}
 function nozPx(n,g){const f=flaps(g)[n.face],ppf=g.ppf;
-  if(n.face===&quot;back&quot;) return{x:f.x+n.u*ppf,         y:f.y+f.h-n.z*ppf};
-  if(n.face===&quot;front&quot;)return{x:f.x+n.u*ppf,         y:f.y+n.z*ppf};
-  if(n.face===&quot;left&quot;) return{x:f.x+f.w-n.z*ppf,     y:f.y+n.u*ppf};
-  if(n.face===&quot;right&quot;)return{x:f.x+n.z*ppf,         y:f.y+n.u*ppf};
+  if(n.face===&amp;quot;back&amp;quot;) return{x:f.x+n.u*ppf,         y:f.y+f.h-n.z*ppf};
+  if(n.face===&amp;quot;front&amp;quot;)return{x:f.x+n.u*ppf,         y:f.y+n.z*ppf};
+  if(n.face===&amp;quot;left&amp;quot;) return{x:f.x+f.w-n.z*ppf,     y:f.y+n.u*ppf};
+  if(n.face===&amp;quot;right&amp;quot;)return{x:f.x+n.z*ppf,         y:f.y+n.u*ppf};
   return{x:f.x+n.x*ppf, y:f.y+n.y*ppf};
 }
 function pxToNoz(mx,my,g){const F=flaps(g),ppf=g.ppf,P=2;
-  for(const face of[&quot;back&quot;,&quot;front&quot;,&quot;left&quot;,&quot;right&quot;,&quot;floor&quot;]){const f=F[face];
-    if(mx>=f.x-P&amp;&amp;mx<=f.x+f.w+P&amp;&amp;my>=f.y-P&amp;&amp;my<=f.y+f.h+P){
-      if(face===&quot;back&quot;) return{face,u:(mx-f.x)/ppf, z:(f.y+f.h-my)/ppf};
-      if(face===&quot;front&quot;)return{face,u:(mx-f.x)/ppf, z:(my-f.y)/ppf};
-      if(face===&quot;left&quot;) return{face,u:(my-f.y)/ppf, z:(f.x+f.w-mx)/ppf};
-      if(face===&quot;right&quot;)return{face,u:(my-f.y)/ppf, z:(mx-f.x)/ppf};
-      return{face:&quot;floor&quot;,x:(mx-f.x)/ppf,y:(my-f.y)/ppf};
+  for(const face of[&amp;quot;back&amp;quot;,&amp;quot;front&amp;quot;,&amp;quot;left&amp;quot;,&amp;quot;right&amp;quot;,&amp;quot;floor&amp;quot;]){const f=F[face];
+    if(mx>=f.x-P&amp;amp;&amp;amp;mx<=f.x+f.w+P&amp;amp;&amp;amp;my>=f.y-P&amp;amp;&amp;amp;my<=f.y+f.h+P){
+      if(face===&amp;quot;back&amp;quot;) return{face,u:(mx-f.x)/ppf, z:(f.y+f.h-my)/ppf};
+      if(face===&amp;quot;front&amp;quot;)return{face,u:(mx-f.x)/ppf, z:(my-f.y)/ppf};
+      if(face===&amp;quot;left&amp;quot;) return{face,u:(my-f.y)/ppf, z:(f.x+f.w-mx)/ppf};
+      if(face===&amp;quot;right&amp;quot;)return{face,u:(my-f.y)/ppf, z:(mx-f.x)/ppf};
+      return{face:&amp;quot;floor&amp;quot;,x:(mx-f.x)/ppf,y:(my-f.y)/ppf};
     }}
   return null;
 }
 function clampNoz(n,g){const{L,W,H}=g;
-  if(n.face===&quot;floor&quot;){n.x=Math.min(L*4,Math.max(0,round1(n.x)));n.y=Math.min(W*4,Math.max(0,round1(n.y)));}
-  else{const along=(n.face===&quot;back&quot;||n.face===&quot;front&quot;)?L*4:W*4;n.u=Math.min(along,Math.max(0,round1(n.u)));n.z=Math.min(H*4,Math.max(0,round1(n.z)));}
+  if(n.face===&amp;quot;floor&amp;quot;){n.x=Math.min(L*4,Math.max(0,round1(n.x)));n.y=Math.min(W*4,Math.max(0,round1(n.y)));}
+  else{const along=(n.face===&amp;quot;back&amp;quot;||n.face===&amp;quot;front&amp;quot;)?L*4:W*4;n.u=Math.min(along,Math.max(0,round1(n.u)));n.z=Math.min(H*4,Math.max(0,round1(n.z)));}
 }
 
 function paint(){
-  const g=layout(),svg=document.getElementById(&quot;net&quot;),{cell,OX,OY,gw,gh}=g,F=flaps(g);
-  svg.setAttribute(&quot;viewBox&quot;,`0 0 ${OX*2+gw*cell} ${OY*2+gh*cell+8}`);
-  let s=&quot;&quot;;
-  const grid=(f,cols,rows,fill)=>{let t=&quot;&quot;;for(let i=0;i<cols;i++)for(let j=0;j<rows;j++)t+=`<rect x=&quot;${(f.x+i*cell).toFixed(1)}&quot; y=&quot;${(f.y+j*cell).toFixed(1)}&quot; width=&quot;${cell.toFixed(1)}&quot; height=&quot;${cell.toFixed(1)}&quot; fill=&quot;${fill}&quot; stroke=&quot;#aab4c0&quot; stroke-width=&quot;1&quot;/>`;t+=`<rect x=&quot;${f.x.toFixed(1)}&quot; y=&quot;${f.y.toFixed(1)}&quot; width=&quot;${f.w.toFixed(1)}&quot; height=&quot;${f.h.toFixed(1)}&quot; fill=&quot;none&quot; stroke=&quot;#1c2733&quot; stroke-width=&quot;3.4&quot;/>`;return t;};
-  s+=grid(F.floor,g.L,g.W,&quot;#f1f5fa&quot;);
-  s+=grid(F.back,g.L,g.H,&quot;#fff&quot;);
-  s+=grid(F.front,g.L,g.H,&quot;#fff&quot;);
-  s+=grid(F.left,g.H,g.W,&quot;#fff&quot;);
-  s+=grid(F.right,g.H,g.W,&quot;#fff&quot;);
-  const tlab=(x,y,t,col)=>`<text x=&quot;${x.toFixed(1)}&quot; y=&quot;${y.toFixed(1)}&quot; text-anchor=&quot;middle&quot; font-size=&quot;10.5&quot; font-weight=&quot;700&quot; letter-spacing=&quot;1&quot; fill=&quot;${col}&quot;>${t}</text>`;
-  s+=tlab(F.floor.x+F.floor.w/2,F.floor.y+F.floor.h/2+4,&quot;PLAN · FLOOR&quot;,&quot;#c3ccd7&quot;);
-  s+=tlab(F.back.x+F.back.w/2,F.back.y-8,&quot;BACK WALL&quot;,&quot;#7a8696&quot;);
-  s+=tlab(F.front.x+F.front.w/2,F.front.y+F.front.h+18,&quot;FRONT WALL&quot;,&quot;#7a8696&quot;);
-  s+=tlab(F.left.x+F.left.w/2,F.left.y-8,&quot;LEFT&quot;,&quot;#7a8696&quot;);
-  s+=tlab(F.right.x+F.right.w/2,F.right.y-8,&quot;RIGHT&quot;,&quot;#7a8696&quot;);
+  const g=layout(),svg=document.getElementById(&amp;quot;net&amp;quot;),{cell,OX,OY,gw,gh}=g,F=flaps(g);
+  svg.setAttribute(&amp;quot;viewBox&amp;quot;,`0 0 ${OX*2+gw*cell} ${OY*2+gh*cell+8}`);
+  let s=&amp;quot;&amp;quot;;
+  const grid=(f,cols,rows,fill)=>{let t=&amp;quot;&amp;quot;;for(let i=0;i<cols;i++)for(let j=0;j<rows;j++)t+=`<rect x=&amp;quot;${(f.x+i*cell).toFixed(1)}&amp;quot; y=&amp;quot;${(f.y+j*cell).toFixed(1)}&amp;quot; width=&amp;quot;${cell.toFixed(1)}&amp;quot; height=&amp;quot;${cell.toFixed(1)}&amp;quot; fill=&amp;quot;${fill}&amp;quot; stroke=&amp;quot;#aab4c0&amp;quot; stroke-width=&amp;quot;1&amp;quot;/>`;t+=`<rect x=&amp;quot;${f.x.toFixed(1)}&amp;quot; y=&amp;quot;${f.y.toFixed(1)}&amp;quot; width=&amp;quot;${f.w.toFixed(1)}&amp;quot; height=&amp;quot;${f.h.toFixed(1)}&amp;quot; fill=&amp;quot;none&amp;quot; stroke=&amp;quot;#1c2733&amp;quot; stroke-width=&amp;quot;3.4&amp;quot;/>`;return t;};
+  s+=grid(F.floor,g.L,g.W,&amp;quot;#f1f5fa&amp;quot;);
+  s+=grid(F.back,g.L,g.H,&amp;quot;#fff&amp;quot;);
+  s+=grid(F.front,g.L,g.H,&amp;quot;#fff&amp;quot;);
+  s+=grid(F.left,g.H,g.W,&amp;quot;#fff&amp;quot;);
+  s+=grid(F.right,g.H,g.W,&amp;quot;#fff&amp;quot;);
+  const tlab=(x,y,t,col)=>`<text x=&amp;quot;${x.toFixed(1)}&amp;quot; y=&amp;quot;${y.toFixed(1)}&amp;quot; text-anchor=&amp;quot;middle&amp;quot; font-size=&amp;quot;10.5&amp;quot; font-weight=&amp;quot;700&amp;quot; letter-spacing=&amp;quot;1&amp;quot; fill=&amp;quot;${col}&amp;quot;>${t}</text>`;
+  s+=tlab(F.floor.x+F.floor.w/2,F.floor.y+F.floor.h/2+4,&amp;quot;PLAN · FLOOR&amp;quot;,&amp;quot;#c3ccd7&amp;quot;);
+  s+=tlab(F.back.x+F.back.w/2,F.back.y-8,&amp;quot;BACK WALL&amp;quot;,&amp;quot;#7a8696&amp;quot;);
+  s+=tlab(F.front.x+F.front.w/2,F.front.y+F.front.h+18,&amp;quot;FRONT WALL&amp;quot;,&amp;quot;#7a8696&amp;quot;);
+  s+=tlab(F.left.x+F.left.w/2,F.left.y-8,&amp;quot;LEFT&amp;quot;,&amp;quot;#7a8696&amp;quot;);
+  s+=tlab(F.right.x+F.right.w/2,F.right.y-8,&amp;quot;RIGHT&amp;quot;,&amp;quot;#7a8696&amp;quot;);
   // floor-level guide on walls (z=0 edge, in green-grey dashes)
-  s+=`<line x1=&quot;${F.back.x}&quot; y1=&quot;${(F.back.y+F.back.h).toFixed(1)}&quot; x2=&quot;${(F.back.x+F.back.w).toFixed(1)}&quot; y2=&quot;${(F.back.y+F.back.h).toFixed(1)}&quot; stroke=&quot;#2f8f57&quot; stroke-width=&quot;1.4&quot; stroke-dasharray=&quot;4 3&quot; opacity=&quot;0.5&quot;/>`;
+  s+=`<line x1=&amp;quot;${F.back.x}&amp;quot; y1=&amp;quot;${(F.back.y+F.back.h).toFixed(1)}&amp;quot; x2=&amp;quot;${(F.back.x+F.back.w).toFixed(1)}&amp;quot; y2=&amp;quot;${(F.back.y+F.back.h).toFixed(1)}&amp;quot; stroke=&amp;quot;#2f8f57&amp;quot; stroke-width=&amp;quot;1.4&amp;quot; stroke-dasharray=&amp;quot;4 3&amp;quot; opacity=&amp;quot;0.5&amp;quot;/>`;
   // openings
   for(const n of S.items){const p=nozPx(n,g),ty=TYPES[n.type]||TYPES.inlet,on=S.sel===n.id,r=Math.min(15,Math.max(10,cell*0.24));
-    if(on)s+=`<circle cx=&quot;${p.x.toFixed(1)}&quot; cy=&quot;${p.y.toFixed(1)}&quot; r=&quot;${(r+3).toFixed(1)}&quot; fill=&quot;none&quot; stroke=&quot;${ty.color}&quot; stroke-width=&quot;1.6&quot; stroke-dasharray=&quot;3 3&quot; pointer-events=&quot;none&quot;/>`;
-    s+=`<circle cx=&quot;${p.x.toFixed(1)}&quot; cy=&quot;${p.y.toFixed(1)}&quot; r=&quot;${r.toFixed(1)}&quot; fill=&quot;${ty.color}26&quot; stroke=&quot;${ty.color}&quot; stroke-width=&quot;2.2&quot; data-nz=&quot;${n.id}&quot; style=&quot;cursor:grab&quot;/>`;
-    s+=`<text x=&quot;${p.x.toFixed(1)}&quot; y=&quot;${(p.y+3.4).toFixed(1)}&quot; text-anchor=&quot;middle&quot; font-size=&quot;${(r*0.62).toFixed(1)}&quot; font-weight=&quot;800&quot; fill=&quot;${ty.color}&quot; pointer-events=&quot;none&quot;>${ty.tag}</text>`;
-    const cap=[n.label,n.dia?(&quot;φ&quot;+n.dia):&quot;&quot;].filter(Boolean).join(&quot; &quot;);
-    if(cap)s+=`<text x=&quot;${p.x.toFixed(1)}&quot; y=&quot;${(p.y-r-4).toFixed(1)}&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot; fill=&quot;#46525f&quot; pointer-events=&quot;none&quot;>${esc(cap)}</text>`;
+    if(on)s+=`<circle cx=&amp;quot;${p.x.toFixed(1)}&amp;quot; cy=&amp;quot;${p.y.toFixed(1)}&amp;quot; r=&amp;quot;${(r+3).toFixed(1)}&amp;quot; fill=&amp;quot;none&amp;quot; stroke=&amp;quot;${ty.color}&amp;quot; stroke-width=&amp;quot;1.6&amp;quot; stroke-dasharray=&amp;quot;3 3&amp;quot; pointer-events=&amp;quot;none&amp;quot;/>`;
+    s+=`<circle cx=&amp;quot;${p.x.toFixed(1)}&amp;quot; cy=&amp;quot;${p.y.toFixed(1)}&amp;quot; r=&amp;quot;${r.toFixed(1)}&amp;quot; fill=&amp;quot;${ty.color}26&amp;quot; stroke=&amp;quot;${ty.color}&amp;quot; stroke-width=&amp;quot;2.2&amp;quot; data-nz=&amp;quot;${n.id}&amp;quot; style=&amp;quot;cursor:grab&amp;quot;/>`;
+    s+=`<text x=&amp;quot;${p.x.toFixed(1)}&amp;quot; y=&amp;quot;${(p.y+3.4).toFixed(1)}&amp;quot; text-anchor=&amp;quot;middle&amp;quot; font-size=&amp;quot;${(r*0.62).toFixed(1)}&amp;quot; font-weight=&amp;quot;800&amp;quot; fill=&amp;quot;${ty.color}&amp;quot; pointer-events=&amp;quot;none&amp;quot;>${ty.tag}</text>`;
+    const cap=[n.label,n.dia?(&amp;quot;φ&amp;quot;+n.dia):&amp;quot;&amp;quot;].filter(Boolean).join(&amp;quot; &amp;quot;);
+    if(cap)s+=`<text x=&amp;quot;${p.x.toFixed(1)}&amp;quot; y=&amp;quot;${(p.y-r-4).toFixed(1)}&amp;quot; text-anchor=&amp;quot;middle&amp;quot; font-size=&amp;quot;9&amp;quot; font-weight=&amp;quot;600&amp;quot; fill=&amp;quot;#46525f&amp;quot; pointer-events=&amp;quot;none&amp;quot;>${esc(cap)}</text>`;
   }
   svg.innerHTML=s;
 }
 
 /* ---------- inline editor ---------- */
 function ptInSvg(e,svg){const r=svg.getBoundingClientRect(),vb=svg.viewBox.baseVal;return{x:(e.clientX-r.left)/r.width*vb.width,y:(e.clientY-r.top)/r.height*vb.height};}
-function closeEditor(){const e=document.getElementById(&quot;nzEd&quot;);if(e)e.remove();}
-function placeEditor(n){const g=layout(),svg=document.getElementById(&quot;net&quot;),ed=document.getElementById(&quot;nzEd&quot;),stage=document.getElementById(&quot;stage&quot;);if(!ed)return;
+function closeEditor(){const e=document.getElementById(&amp;quot;nzEd&amp;quot;);if(e)e.remove();}
+function placeEditor(n){const g=layout(),svg=document.getElementById(&amp;quot;net&amp;quot;),ed=document.getElementById(&amp;quot;nzEd&amp;quot;),stage=document.getElementById(&amp;quot;stage&amp;quot;);if(!ed)return;
   const p=nozPx(n,g),sr=svg.getBoundingClientRect(),vb=svg.viewBox.baseVal,scale=sr.width/vb.width,st=stage.getBoundingClientRect();
-  ed.style.left=(sr.left-st.left+p.x*scale)+&quot;px&quot;;ed.style.top=(sr.top-st.top+p.y*scale-52)+&quot;px&quot;;}
-function openEditor(id){closeEditor();const n=S.items.find(z=>z.id===id);if(!n)return;const stage=document.getElementById(&quot;stage&quot;);
-  const ed=document.createElement(&quot;div&quot;);ed.className=&quot;nzEd&quot;;ed.id=&quot;nzEd&quot;;
-  ed.innerHTML=`<select id=&quot;edType&quot;>${ORDER.map(k=>`<option value=&quot;${k}&quot; ${n.type===k?&quot;selected&quot;:&quot;&quot;}>${TYPES[k].name}</option>`).join(&quot;&quot;)}</select>`+
-    `<span class=&quot;pf&quot;>φ<input id=&quot;edDia&quot; value=&quot;${esc(n.dia)}&quot; placeholder=&quot;size&quot;></span>`+
-    `<input id=&quot;edLab&quot; value=&quot;${esc(n.label)}&quot; placeholder=&quot;note&quot;>`+
-    `<button id=&quot;edDel&quot; title=&quot;Delete&quot;>✕</button>`;
+  ed.style.left=(sr.left-st.left+p.x*scale)+&amp;quot;px&amp;quot;;ed.style.top=(sr.top-st.top+p.y*scale-52)+&amp;quot;px&amp;quot;;}
+function openEditor(id){closeEditor();const n=S.items.find(z=>z.id===id);if(!n)return;const stage=document.getElementById(&amp;quot;stage&amp;quot;);
+  const ed=document.createElement(&amp;quot;div&amp;quot;);ed.className=&amp;quot;nzEd&amp;quot;;ed.id=&amp;quot;nzEd&amp;quot;;
+  ed.innerHTML=`<select id=&amp;quot;edType&amp;quot;>${ORDER.map(k=>`<option value=&amp;quot;${k}&amp;quot; ${n.type===k?&amp;quot;selected&amp;quot;:&amp;quot;&amp;quot;}>${TYPES[k].name}</option>`).join(&amp;quot;&amp;quot;)}</select>`+
+    `<span class=&amp;quot;pf&amp;quot;>φ<input id=&amp;quot;edDia&amp;quot; value=&amp;quot;${esc(n.dia)}&amp;quot; placeholder=&amp;quot;size&amp;quot;></span>`+
+    `<input id=&amp;quot;edLab&amp;quot; value=&amp;quot;${esc(n.label)}&amp;quot; placeholder=&amp;quot;note&amp;quot;>`+
+    `<button id=&amp;quot;edDel&amp;quot; title=&amp;quot;Delete&amp;quot;>✕</button>`;
   stage.appendChild(ed);placeEditor(n);
-  ed.querySelector(&quot;#edType&quot;).onchange=e=>{n.type=e.target.value;paint();placeEditor(n);};
-  ed.querySelector(&quot;#edDia&quot;).oninput=e=>{n.dia=e.target.value;paint();placeEditor(n);};
-  ed.querySelector(&quot;#edLab&quot;).oninput=e=>{n.label=e.target.value;paint();placeEditor(n);};
-  ed.querySelector(&quot;#edDel&quot;).onclick=()=>{S.items=S.items.filter(z=>z.id!==id);S.sel=null;closeEditor();paint();};
-  ed.querySelector(&quot;#edDia&quot;).focus();
+  ed.querySelector(&amp;quot;#edType&amp;quot;).onchange=e=>{n.type=e.target.value;paint();placeEditor(n);};
+  ed.querySelector(&amp;quot;#edDia&amp;quot;).oninput=e=>{n.dia=e.target.value;paint();placeEditor(n);};
+  ed.querySelector(&amp;quot;#edLab&amp;quot;).oninput=e=>{n.label=e.target.value;paint();placeEditor(n);};
+  ed.querySelector(&amp;quot;#edDel&amp;quot;).onclick=()=>{S.items=S.items.filter(z=>z.id!==id);S.sel=null;closeEditor();paint();};
+  ed.querySelector(&amp;quot;#edDia&amp;quot;).focus();
 }
 
 /* ---------- interaction ---------- */
-function bindSvg(){const svg=document.getElementById(&quot;net&quot;);
-  svg.addEventListener(&quot;pointerdown&quot;,e=>{const g=layout();const nz=e.target.getAttribute&amp;&amp;e.target.getAttribute(&quot;data-nz&quot;);
+function bindSvg(){const svg=document.getElementById(&amp;quot;net&amp;quot;);
+  svg.addEventListener(&amp;quot;pointerdown&amp;quot;,e=>{const g=layout();const nz=e.target.getAttribute&amp;amp;&amp;amp;e.target.getAttribute(&amp;quot;data-nz&amp;quot;);
     svg.setPointerCapture(e.pointerId);closeEditor();
     if(nz){drag={id:nz,moved:false,sx:e.clientX,sy:e.clientY};S.sel=nz;paint();return;}
     const pt=ptInSvg(e,svg),m=pxToNoz(pt.x,pt.y,g);if(!m){S.sel=null;paint();drag=null;return;}
-    const id=&quot;o&quot;+Date.now().toString(36),n=Object.assign({id,type:S.active,dia:S.dia[S.active]||&quot;&quot;,label:&quot;&quot;},m);clampNoz(n,g);
+    const id=&amp;quot;o&amp;quot;+Date.now().toString(36),n=Object.assign({id,type:S.active,dia:S.dia[S.active]||&amp;quot;&amp;quot;,label:&amp;quot;&amp;quot;},m);clampNoz(n,g);
     S.items.push(n);S.sel=id;paint();drag={id,placed:true,moved:false,sx:e.clientX,sy:e.clientY};});
-  svg.addEventListener(&quot;pointermove&quot;,e=>{if(!drag)return;if(Math.abs(e.clientX-drag.sx)+Math.abs(e.clientY-drag.sy)>3)drag.moved=true;
+  svg.addEventListener(&amp;quot;pointermove&amp;quot;,e=>{if(!drag)return;if(Math.abs(e.clientX-drag.sx)+Math.abs(e.clientY-drag.sy)>3)drag.moved=true;
     const g=layout(),pt=ptInSvg(e,svg),m=pxToNoz(pt.x,pt.y,g);if(!m)return;const idx=S.items.findIndex(z=>z.id===drag.id);if(idx<0)return;
     const c=S.items[idx];S.items[idx]=Object.assign({id:c.id,type:c.type,dia:c.dia,label:c.label},m);clampNoz(S.items[idx],g);paint();});
   function up(e){if(!drag)return;try{svg.releasePointerCapture(e.pointerId);}catch(_){}const id=drag.id,moved=drag.moved;drag=null;if(!moved){S.sel=id;paint();openEditor(id);}else paint();}
-  svg.addEventListener(&quot;pointerup&quot;,up);svg.addEventListener(&quot;pointercancel&quot;,up);
+  svg.addEventListener(&amp;quot;pointerup&amp;quot;,up);svg.addEventListener(&amp;quot;pointercancel&amp;quot;,up);
 }
 
 /* ---------- rail ---------- */
-function renderTypes(){const box=document.getElementById(&quot;types&quot;);box.innerHTML=&quot;&quot;;
-  ORDER.forEach(k=>{const t=TYPES[k];const el=document.createElement(&quot;div&quot;);el.className=&quot;ty&quot;+(S.active===k?&quot; on&quot;:&quot;&quot;);el.style.color=t.color;
-    el.innerHTML=`<span class=&quot;dot&quot;></span><span class=&quot;nm&quot;>${t.name}</span><span class=&quot;dia&quot;>=φ<input data-dia=&quot;${k}&quot; value=&quot;${esc(S.dia[k])}&quot; placeholder=&quot;—&quot;></span>`;
-    el.addEventListener(&quot;pointerdown&quot;,e=>{if(e.target.tagName===&quot;INPUT&quot;)return;S.active=k;renderTypes();});
-    el.querySelector(&quot;input&quot;).addEventListener(&quot;input&quot;,e=>{S.dia[k]=e.target.value;});
+function renderTypes(){const box=document.getElementById(&amp;quot;types&amp;quot;);box.innerHTML=&amp;quot;&amp;quot;;
+  ORDER.forEach(k=>{const t=TYPES[k];const el=document.createElement(&amp;quot;div&amp;quot;);el.className=&amp;quot;ty&amp;quot;+(S.active===k?&amp;quot; on&amp;quot;:&amp;quot;&amp;quot;);el.style.color=t.color;
+    el.innerHTML=`<span class=&amp;quot;dot&amp;quot;></span><span class=&amp;quot;nm&amp;quot;>${t.name}</span><span class=&amp;quot;dia&amp;quot;>=φ<input data-dia=&amp;quot;${k}&amp;quot; value=&amp;quot;${esc(S.dia[k])}&amp;quot; placeholder=&amp;quot;—&amp;quot;></span>`;
+    el.addEventListener(&amp;quot;pointerdown&amp;quot;,e=>{if(e.target.tagName===&amp;quot;INPUT&amp;quot;)return;S.active=k;renderTypes();});
+    el.querySelector(&amp;quot;input&amp;quot;).addEventListener(&amp;quot;input&amp;quot;,e=>{S.dia[k]=e.target.value;});
     box.appendChild(el);});
 }
-function sizeVals(){document.getElementById(&quot;colsV&quot;).textContent=`${S.cols}·${S.cols*4}′`;document.getElementById(&quot;rowsV&quot;).textContent=`${S.rows}·${S.rows*4}′`;document.getElementById(&quot;heightV&quot;).textContent=`${S.height}·${S.height*4}′`;document.getElementById(&quot;sizeChip&quot;).textContent=`${S.cols*4}′ × ${S.rows*4}′ × ${S.height*4}′`;}
+function sizeVals(){document.getElementById(&amp;quot;colsV&amp;quot;).textContent=`${S.cols}·${S.cols*4}′`;document.getElementById(&amp;quot;rowsV&amp;quot;).textContent=`${S.rows}·${S.rows*4}′`;document.getElementById(&amp;quot;heightV&amp;quot;).textContent=`${S.height}·${S.height*4}′`;document.getElementById(&amp;quot;sizeChip&amp;quot;).textContent=`${S.cols*4}′ × ${S.rows*4}′ × ${S.height*4}′`;}
 function clampSize(){S.cols=Math.max(1,Math.min(14,S.cols));S.rows=Math.max(1,Math.min(10,S.rows));S.height=Math.max(1,Math.min(6,S.height));}
 function fixItems(){const g=layout();S.items.forEach(n=>clampNoz(n,g));}
 function refresh(){sizeVals();renderTypes();paint();}
 
-document.querySelectorAll(&quot;[data-d]&quot;).forEach(b=>b.addEventListener(&quot;click&quot;,()=>{S.sel=null;closeEditor();S[b.dataset.d]+=+b.dataset.v;clampSize();fixItems();refresh();}));
-document.getElementById(&quot;clrBtn&quot;).addEventListener(&quot;click&quot;,()=>{if(confirm(&quot;Remove all openings?&quot;)){S.items=[];S.sel=null;closeEditor();paint();}});
-document.getElementById(&quot;menuBtn&quot;).addEventListener(&quot;click&quot;,()=>document.getElementById(&quot;rail&quot;).classList.toggle(&quot;hidden&quot;));
-document.addEventListener(&quot;keydown&quot;,e=>{if(e.key===&quot;Escape&quot;){S.sel=null;closeEditor();paint();}});
-window.addEventListener(&quot;resize&quot;,()=>{const sel=S.sel;paint();if(sel){const n=S.items.find(z=>z.id===sel);if(n&amp;&amp;document.getElementById(&quot;nzEd&quot;))placeEditor(n);}});
+document.querySelectorAll(&amp;quot;[data-d]&amp;quot;).forEach(b=>b.addEventListener(&amp;quot;click&amp;quot;,()=>{S.sel=null;closeEditor();S[b.dataset.d]+=+b.dataset.v;clampSize();fixItems();refresh();}));
+document.getElementById(&amp;quot;clrBtn&amp;quot;).addEventListener(&amp;quot;click&amp;quot;,()=>{if(confirm(&amp;quot;Remove all openings?&amp;quot;)){S.items=[];S.sel=null;closeEditor();paint();}});
+document.getElementById(&amp;quot;menuBtn&amp;quot;).addEventListener(&amp;quot;click&amp;quot;,()=>document.getElementById(&amp;quot;rail&amp;quot;).classList.toggle(&amp;quot;hidden&amp;quot;));
+document.addEventListener(&amp;quot;keydown&amp;quot;,e=>{if(e.key===&amp;quot;Escape&amp;quot;){S.sel=null;closeEditor();paint();}});
+window.addEventListener(&amp;quot;resize&amp;quot;,()=>{const sel=S.sel;paint();if(sel){const n=S.items.find(z=>z.id===sel);if(n&amp;amp;&amp;amp;document.getElementById(&amp;quot;nzEd&amp;quot;))placeEditor(n);}});
 
-document.getElementById(&quot;pngBtn&quot;).addEventListener(&quot;click&quot;,()=>{
-  const sel=S.sel;S.sel=null;paint();const svg=document.getElementById(&quot;net&quot;);const out=svg.outerHTML.replace(&quot;<svg&quot;,'<svg xmlns=&quot;http://www.w3.org/2000/svg&quot;');
+document.getElementById(&amp;quot;pngBtn&amp;quot;).addEventListener(&amp;quot;click&amp;quot;,()=>{
+  const sel=S.sel;S.sel=null;paint();const svg=document.getElementById(&amp;quot;net&amp;quot;);const out=svg.outerHTML.replace(&amp;quot;<svg&amp;quot;,'<svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot;');
   const vb=svg.viewBox.baseVal,W=Math.round(vb.width),Hh=Math.round(vb.height);
-  const wrapped=`<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;${W}&quot; height=&quot;${Hh+30}&quot;><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#fff&quot;/><text x=&quot;${W/2}&quot; y=&quot;20&quot; text-anchor=&quot;middle&quot; font-family=&quot;Inter&quot; font-size=&quot;14&quot; font-weight=&quot;800&quot; fill=&quot;#18222e&quot;>TYPICAL PIPING OPENING INFORMATION</text><g transform=&quot;translate(0,28)&quot;>${svg.innerHTML}</g></svg>`;
-  const url=URL.createObjectURL(new Blob([wrapped],{type:&quot;image/svg+xml;charset=utf-8&quot;})),img=new Image();
-  img.onload=function(){const cv=document.createElement(&quot;canvas&quot;);cv.width=W*2;cv.height=(Hh+30)*2;const cx=cv.getContext(&quot;2d&quot;);cx.scale(2,2);cx.drawImage(img,0,0);URL.revokeObjectURL(url);cv.toBlob(b=>{const a=document.createElement(&quot;a&quot;);a.href=URL.createObjectURL(b);a.download=&quot;piping-openings.png&quot;;a.click();});S.sel=sel;paint();};
+  const wrapped=`<svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;${W}&amp;quot; height=&amp;quot;${Hh+30}&amp;quot;><rect width=&amp;quot;100%&amp;quot; height=&amp;quot;100%&amp;quot; fill=&amp;quot;#fff&amp;quot;/><text x=&amp;quot;${W/2}&amp;quot; y=&amp;quot;20&amp;quot; text-anchor=&amp;quot;middle&amp;quot; font-family=&amp;quot;Inter&amp;quot; font-size=&amp;quot;14&amp;quot; font-weight=&amp;quot;800&amp;quot; fill=&amp;quot;#18222e&amp;quot;>TYPICAL PIPING OPENING INFORMATION</text><g transform=&amp;quot;translate(0,28)&amp;quot;>${svg.innerHTML}</g></svg>`;
+  const url=URL.createObjectURL(new Blob([wrapped],{type:&amp;quot;image/svg+xml;charset=utf-8&amp;quot;})),img=new Image();
+  img.onload=function(){const cv=document.createElement(&amp;quot;canvas&amp;quot;);cv.width=W*2;cv.height=(Hh+30)*2;const cx=cv.getContext(&amp;quot;2d&amp;quot;);cx.scale(2,2);cx.drawImage(img,0,0);URL.revokeObjectURL(url);cv.toBlob(b=>{const a=document.createElement(&amp;quot;a&amp;quot;);a.href=URL.createObjectURL(b);a.download=&amp;quot;piping-openings.png&amp;quot;;a.click();});S.sel=sel;paint();};
   img.onerror=function(){URL.revokeObjectURL(url);S.sel=sel;paint();};img.src=url;
 });
-document.getElementById(&quot;printBtn&quot;).addEventListener(&quot;click&quot;,()=>{
-  const sel=S.sel;S.sel=null;paint();const svg=document.getElementById(&quot;net&quot;).outerHTML;S.sel=sel;paint();
-  const FACE={back:&quot;Back&quot;,front:&quot;Front&quot;,left:&quot;Left&quot;,right:&quot;Right&quot;,floor:&quot;Floor&quot;};
-  let rows=S.items.map(n=>{const pos=n.face===&quot;floor&quot;?`x ${n.x.toFixed(1)}′, y ${n.y.toFixed(1)}′`:`${n.u.toFixed(1)}′ along, ${n.z.toFixed(1)}′ high`;return `<tr><td>${TYPES[n.type].name}</td><td>${n.dia?(&quot;φ&quot;+n.dia):&quot;—&quot;}</td><td>${FACE[n.face]}</td><td>${pos}</td><td>${esc(n.label)||&quot;&quot;}</td></tr>`;}).join(&quot;&quot;)||&quot;<tr><td colspan=5>None</td></tr>&quot;;
-  const w=window.open(&quot;&quot;,&quot;_blank&quot;);if(!w)return;
-  w.document.write(`<!doctype html><html><head><title>Piping Openings ${S.cols*4}x${S.rows*4}x${S.height*4}</title><style>body{font-family:Inter,system-ui,sans-serif;color:#18222e;margin:22px}h2{font-size:15px;text-align:center}svg{width:100%;max-width:760px;display:block;margin:0 auto}table{width:100%;border-collapse:collapse;font-size:12px;margin-top:16px}th,td{border:1px solid #e3e8f1;padding:6px 8px;text-align:left}th{background:#f4f7fb}</style></head><body><h2>TYPICAL PIPING OPENING INFORMATION · ${S.cols*4}′×${S.rows*4}′×${S.height*4}′</h2>${svg}<table><thead><tr><th>Opening</th><th>Size φ</th><th>Wall</th><th>Position</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table><scr`+`ipt>window.onload=function(){window.print();}</scr`+`ipt></body></html>`);
+document.getElementById(&amp;quot;printBtn&amp;quot;).addEventListener(&amp;quot;click&amp;quot;,()=>{
+  const sel=S.sel;S.sel=null;paint();const svg=document.getElementById(&amp;quot;net&amp;quot;).outerHTML;S.sel=sel;paint();
+  const FACE={back:&amp;quot;Back&amp;quot;,front:&amp;quot;Front&amp;quot;,left:&amp;quot;Left&amp;quot;,right:&amp;quot;Right&amp;quot;,floor:&amp;quot;Floor&amp;quot;};
+  let rows=S.items.map(n=>{const pos=n.face===&amp;quot;floor&amp;quot;?`x ${n.x.toFixed(1)}′, y ${n.y.toFixed(1)}′`:`${n.u.toFixed(1)}′ along · ${n.z.toFixed(1)}′ high`;return `<tr><td>${TYPES[n.type].name}</td><td>${n.dia?(&amp;quot;φ&amp;quot;+n.dia):&amp;quot;—&amp;quot;}</td><td>${FACE[n.face]}</td><td>${pos}</td><td>${esc(n.label)||&amp;quot;&amp;quot;}</td></tr>`;}).join(&amp;quot;&amp;quot;)||&amp;quot;<tr><td colspan=5>None</td></tr>&amp;quot;;
+  const body=svg+'<table><thead><tr><th>Opening</th><th>Size φ</th><th>Wall</th><th>Position</th><th>Note</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  const fields=[[&amp;quot;Tank Size&amp;quot;,(S.cols*4)+&amp;quot;' x &amp;quot;+(S.rows*4)+&amp;quot;' x &amp;quot;+(S.height*4)+&amp;quot;'(H)&amp;quot;],[&amp;quot;Openings&amp;quot;,String(S.items.length)],[&amp;quot;Finishes&amp;quot;,&amp;quot;HDG Tank&amp;quot;],[&amp;quot;Sheet&amp;quot;,&amp;quot;Piping 1/1&amp;quot;]];
+  const w=window.open(&amp;quot;&amp;quot;,&amp;quot;_blank&amp;quot;);if(!w)return;
+  w.document.write('<!doctype html><html><head><title>Piping Openings '+(S.cols*4)+'x'+(S.rows*4)+'x'+(S.height*4)+'</title><style>'+jtPrintCSS()+'</style></head><body>'+jtSheet(&amp;quot;Typical Piping Opening Information&amp;quot;,body,fields)+'<scr'+'ipt>window.onload=function(){window.print();}</scr'+'ipt></body></html>');
   w.document.close();
 });
-
 /* ERP size sync */
-window.addEventListener(&quot;message&quot;,function(e){const d=e.data;if(!d)return;if(d.type===&quot;jtTankSize&quot;){if(d.cols)S.cols=Math.max(1,Math.min(14,d.cols|0));if(d.rows)S.rows=Math.max(1,Math.min(10,d.rows|0));if(d.height)S.height=Math.max(1,Math.min(6,d.height|0));clampSize();fixItems();refresh();}if(d.type===&quot;jtRelayout&quot;)paint();});
-try{parent.postMessage({type:&quot;jtFitReady&quot;},&quot;*&quot;);}catch(_){}
+window.addEventListener(&amp;quot;message&amp;quot;,function(e){const d=e.data;if(!d)return;if(d.type===&amp;quot;jtTankSize&amp;quot;){if(d.cols)S.cols=Math.max(1,Math.min(14,d.cols|0));if(d.rows)S.rows=Math.max(1,Math.min(10,d.rows|0));if(d.height)S.height=Math.max(1,Math.min(6,d.height|0));clampSize();fixItems();refresh();}if(d.type===&amp;quot;jtRelayout&amp;quot;)paint();});
+try{parent.postMessage({type:&amp;quot;jtFitReady&amp;quot;},&amp;quot;*&amp;quot;);}catch(_){}
 
 bindSvg();refresh();
 </script>
 </body>
 </html>
-"></iframe>
-</div></div>
-<script>(function(){var $=function(i){return document.getElementById(i);};
+&quot;></iframe>
+    <iframe id=&quot;fL&quot; class=&quot;hide&quot; title=&quot;Concrete Plinth&quot; srcdoc=&quot;<!doctype html>
+<html lang=&amp;quot;en&amp;quot;>
+<head>
+<meta charset=&amp;quot;utf-8&amp;quot; />
+<meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1&amp;quot; />
+<title>Typical Concrete Plinth</title>
+<style>
+  :root{--ink:#18222e;--sub:#5a6675;--faint:#93a0af;--line:#e6eaf1;--line2:#cfd7e3;--accent:#1f4e79;--soft:#eaf1fa}
+  *{box-sizing:border-box}html,body{margin:0;height:100%}
+  body{font-family:&amp;quot;Inter&amp;quot;,system-ui,-apple-system,&amp;quot;Segoe UI&amp;quot;,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);height:100%;background:linear-gradient(180deg,#eef2f8,#e6ebf2)}
+  .app{display:flex;flex-direction:column;height:100vh;height:100dvh}
+  header{display:flex;align-items:center;gap:12px;padding:11px 18px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.78);backdrop-filter:blur(8px)}
+  header .logo{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,#6b5b46,#8a7559);box-shadow:0 4px 12px rgba(107,91,70,.3)}
+  header h1{font-size:14.5px;font-weight:800;margin:0;line-height:1.1;letter-spacing:.3px}
+  header .sub{font-size:11px;color:var(--sub)}
+  header .size{margin-left:auto;font:600 12px Inter;color:var(--accent);background:var(--soft);border:1px solid #d6e3f2;border-radius:999px;padding:5px 13px;font-variant-numeric:tabular-nums}
+  main{flex:1;display:flex;min-height:0}
+  .rail{width:236px;flex:none;border-right:1px solid var(--line);background:#fff;overflow:auto;padding:14px}
+  .stage{flex:1;overflow:auto;padding:18px;display:flex;justify-content:center}
+  .sheet{background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 30px rgba(16,24,37,.08);width:100%;max-width:820px;padding:16px 18px}
+  .panel{margin-bottom:15px}.panel h2{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:0 0 9px}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+  .step{display:flex;align-items:center;gap:6px}.step b{font-size:13px;min-width:52px}
+  .v{font-variant-numeric:tabular-nums;font-size:12px;color:var(--sub);min-width:50px;text-align:right}
+  button.sb{width:26px;height:26px;border-radius:8px;border:1px solid var(--line2);background:#fff;color:var(--sub);font-size:15px;cursor:pointer;display:grid;place-items:center}
+  button.sb:hover{background:var(--soft);color:var(--accent)}
+  .seg{display:flex;border:1px solid var(--line2);border-radius:9px;overflow:hidden}
+  .seg button{flex:1;border:0;background:#fff;padding:7px 4px;font:600 12px Inter;color:var(--sub);cursor:pointer}
+  .seg button.on{background:var(--accent);color:#fff}
+  .fld{margin-bottom:8px}.fld label{display:block;font-size:11px;color:var(--faint);margin-bottom:3px}
+  .fld input{width:100%;border:1px solid var(--line2);border-radius:7px;padding:6px 8px;font:inherit;color:var(--ink)}
+  .btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:8px;border:1px solid var(--line2);border-radius:9px;background:#fff;color:var(--sub);font:600 12px Inter;cursor:pointer}
+  .btn:hover{background:var(--soft);color:var(--accent)}
+  svg.draw{width:100%;display:block}
+  table.tb{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}
+  table.tb td{border:1px solid #c9d2de;padding:5px 8px}
+  table.tb td.k{background:#f4f7fb;font-weight:700;width:120px;color:#46525f}
+  table.tb input{border:0;background:transparent;width:100%;font:inherit;color:var(--ink);outline:none}
+  table.tb input:focus{outline:1px solid var(--accent);border-radius:3px}
+  .mfg{border:1px solid #c9d2de;border-top:0;text-align:center;padding:7px 8px;font-size:11px;color:var(--sub)}
+  .mfg b{font-size:13px;color:var(--ink);letter-spacing:.3px}
+  .menuBtn{display:none}
+  @media(max-width:760px){.rail{position:absolute;z-index:6;height:100%}.rail.hidden{transform:translateX(-100%)}.menuBtn{display:grid!important}}
+</style>
+</head>
+<body>
+<div class=&amp;quot;app&amp;quot;>
+  <header>
+    <button class=&amp;quot;menuBtn sb&amp;quot; id=&amp;quot;menuBtn&amp;quot;>☰</button>
+    <div class=&amp;quot;logo&amp;quot;><svg width=&amp;quot;17&amp;quot; height=&amp;quot;17&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot; stroke=&amp;quot;currentColor&amp;quot; stroke-width=&amp;quot;1.8&amp;quot;><rect x=&amp;quot;3&amp;quot; y=&amp;quot;9&amp;quot; width=&amp;quot;18&amp;quot; height=&amp;quot;11&amp;quot;/><path d=&amp;quot;M3 13h18M9 9v11M15 9v11&amp;quot;/></svg></div>
+    <div><h1>TYPICAL CONCRETE PLINTH</h1><div class=&amp;quot;sub&amp;quot;>foundation by contractor · confirm with customer</div></div>
+    <span class=&amp;quot;size&amp;quot; id=&amp;quot;sizeChip&amp;quot;></span>
+  </header>
+  <main>
+    <aside class=&amp;quot;rail&amp;quot; id=&amp;quot;rail&amp;quot;>
+      <div class=&amp;quot;panel&amp;quot;><h2>Tank size (panels · ft)</h2>
+        <div class=&amp;quot;step row&amp;quot;><b>Length</b><div class=&amp;quot;step&amp;quot;><button class=&amp;quot;sb&amp;quot; data-d=&amp;quot;cols&amp;quot; data-v=&amp;quot;-1&amp;quot;>−</button><span class=&amp;quot;v&amp;quot; id=&amp;quot;colsV&amp;quot;></span><button class=&amp;quot;sb&amp;quot; data-d=&amp;quot;cols&amp;quot; data-v=&amp;quot;1&amp;quot;>+</button></div></div>
+        <div class=&amp;quot;step row&amp;quot;><b>Width</b><div class=&amp;quot;step&amp;quot;><button class=&amp;quot;sb&amp;quot; data-d=&amp;quot;rows&amp;quot; data-v=&amp;quot;-1&amp;quot;>−</button><span class=&amp;quot;v&amp;quot; id=&amp;quot;rowsV&amp;quot;></span><button class=&amp;quot;sb&amp;quot; data-d=&amp;quot;rows&amp;quot; data-v=&amp;quot;1&amp;quot;>+</button></div></div>
+        <div class=&amp;quot;step row&amp;quot;><b>Height</b><div class=&amp;quot;step&amp;quot;><button class=&amp;quot;sb&amp;quot; data-d=&amp;quot;height&amp;quot; data-v=&amp;quot;-1&amp;quot;>−</button><span class=&amp;quot;v&amp;quot; id=&amp;quot;heightV&amp;quot;></span><button class=&amp;quot;sb&amp;quot; data-d=&amp;quot;height&amp;quot; data-v=&amp;quot;1&amp;quot;>+</button></div></div>
+      </div>
+      <div class=&amp;quot;panel&amp;quot;><h2>Plinth type</h2>
+        <div class=&amp;quot;seg&amp;quot; id=&amp;quot;typeSeg&amp;quot;><button data-t=&amp;quot;A&amp;quot; class=&amp;quot;on&amp;quot;>Type A</button><button data-t=&amp;quot;B&amp;quot;>Type B</button></div>
+        <p class=&amp;quot;sub&amp;quot; style=&amp;quot;font-size:11px;line-height:1.5;margin:8px 0 0&amp;quot;>Type A: beams across the width · Type B: beams along the length. Both at 1220 mm centres.</p>
+      </div>
+      <div class=&amp;quot;panel&amp;quot;><h2>Title block</h2>
+        <div class=&amp;quot;fld&amp;quot;><label>Finishes</label><input id=&amp;quot;tbFin&amp;quot; value=&amp;quot;HDG TANK&amp;quot;></div>
+        <div class=&amp;quot;fld&amp;quot;><label>Customer</label><input id=&amp;quot;tbCust&amp;quot; placeholder=&amp;quot;customer&amp;quot;></div>
+        <div class=&amp;quot;fld&amp;quot;><label>Project</label><input id=&amp;quot;tbProj&amp;quot; placeholder=&amp;quot;project&amp;quot;></div>
+        <div class=&amp;quot;fld&amp;quot;><label>Sheet</label><input id=&amp;quot;tbSheet&amp;quot; value=&amp;quot;1/&amp;quot;></div>
+        <div class=&amp;quot;fld&amp;quot;><label>Date</label><input id=&amp;quot;tbDate&amp;quot;></div>
+      </div>
+      <div class=&amp;quot;panel&amp;quot;><h2>Actions</h2>
+        <button class=&amp;quot;btn&amp;quot; id=&amp;quot;pngBtn&amp;quot;>⬇ Export PNG</button>
+        <button class=&amp;quot;btn&amp;quot; id=&amp;quot;printBtn&amp;quot; style=&amp;quot;margin-top:6px&amp;quot;>🖨️ Print sheet</button>
+      </div>
+    </aside>
+    <div class=&amp;quot;stage&amp;quot;>
+      <div class=&amp;quot;sheet&amp;quot; id=&amp;quot;sheet&amp;quot;>
+        <svg class=&amp;quot;draw&amp;quot; id=&amp;quot;draw&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot;></svg>
+        <table class=&amp;quot;tb&amp;quot;>
+          <tr><td class=&amp;quot;k&amp;quot;>Tank Size</td><td id=&amp;quot;tbSize&amp;quot;></td></tr>
+          <tr><td class=&amp;quot;k&amp;quot;>Finishes</td><td><input id=&amp;quot;tbFin2&amp;quot; value=&amp;quot;HDG TANK&amp;quot;></td></tr>
+          <tr><td class=&amp;quot;k&amp;quot;>Customer</td><td><input id=&amp;quot;tbCust2&amp;quot;></td></tr>
+          <tr><td class=&amp;quot;k&amp;quot;>Project</td><td><input id=&amp;quot;tbProj2&amp;quot;></td></tr>
+          <tr><td class=&amp;quot;k&amp;quot;>Sheet</td><td><input id=&amp;quot;tbSheet2&amp;quot; value=&amp;quot;1/&amp;quot;></td></tr>
+          <tr><td class=&amp;quot;k&amp;quot;>Date</td><td><input id=&amp;quot;tbDate2&amp;quot;></td></tr>
+        </table>
+        <div class=&amp;quot;mfg&amp;quot;>Manufactured by &amp;amp;nbsp;<b>JUTARAMA INDUSTRIES (M) SDN BHD</b><br>19, Jalan Mega 2/1, Kawasan Perindustrian Mega 2, 43500 Semenyih, Selangor Darul Ehsan · Email: jutarama@gmail.com</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+const S={cols:3,rows:2,height:1,type:&amp;quot;A&amp;quot;};
+const INK=&amp;quot;#1c2733&amp;quot;,DIM=&amp;quot;#46525f&amp;quot;,NOTE=&amp;quot;#1c2733&amp;quot;;
+function jtPrintCSS(){return '@page{size:A4;margin:11mm}*{box-sizing:border-box}body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#16202b;margin:0}.frame{border:1.6px solid #16202b}.hd{display:flex;align-items:center;gap:11px;padding:9px 13px;border-bottom:1.6px solid #16202b}.hd .mk{width:33px;height:33px;border-radius:8px;background:linear-gradient(135deg,#1f4e79,#2a64a0);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}.hd .co{font-weight:800;font-size:14.5px;letter-spacing:.4px}.hd .ad{font-size:9.5px;color:#5a6675}.hd .dt{margin-left:auto;text-align:right;font-size:10.5px;font-weight:700;color:#1f4e79;border:1px solid #d6e3f2;background:#eef4fb;border-radius:6px;padding:5px 9px}.title{text-align:center;font-weight:800;font-size:14.5px;letter-spacing:.6px;padding:7px;border-bottom:1.6px solid #16202b;text-transform:uppercase}.bd{padding:13px}.bd svg{max-width:100%;display:block;margin:0 auto}table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:10px}th,td{border:1px solid #cfd8e3;padding:5px 8px;text-align:left}th{background:#eef3f9}.tb{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.6px solid #16202b}.tb .c{border-right:1px solid #cfd8e3;border-bottom:1px solid #cfd8e3;padding:5px 9px;font-size:10.5px}.tb .c b{display:block;color:#46525f;font-size:8.5px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1px}.ft{text-align:center;padding:6px;border-top:1px solid #cfd8e3;font-size:9.5px;color:#7a8696}';}
+function jtSheet(title,body,fields){var d=new Date().toLocaleDateString();
+  return '<div class=&amp;quot;frame&amp;quot;><div class=&amp;quot;hd&amp;quot;><div class=&amp;quot;mk&amp;quot;>J</div><div><div class=&amp;quot;co&amp;quot;>JUTARAMA INDUSTRIES (M) SDN BHD</div><div class=&amp;quot;ad&amp;quot;>19, Jalan Mega 2/1, Kawasan Perindustrian Mega 2, 43500 Semenyih, Selangor Darul Ehsan · jutarama@gmail.com</div></div><div class=&amp;quot;dt&amp;quot;>DATE<br>'+d+'</div></div><div class=&amp;quot;title&amp;quot;>'+title+'</div><div class=&amp;quot;bd&amp;quot;>'+body+'</div><div class=&amp;quot;tb&amp;quot;>'+fields.map(function(f){return '<div class=&amp;quot;c&amp;quot;><b>'+f[0]+'</b>'+(f[1]||&amp;quot;—&amp;quot;)+'</div>';}).join(&amp;quot;&amp;quot;)+'</div><div class=&amp;quot;ft&amp;quot;>System-generated drawing · JUTARAMA Tank Studio</div></div>';}
+function ftLabel(ft){const f=Math.floor(ft),inch=Math.round((ft-f)*12);return inch?`MIN ${f}'-${inch}&amp;quot;`:`MIN ${f}'`;}
+
+function draw(){
+  const L=S.cols*4,W=S.rows*4;            // tank footprint in ft
+  const extL=L+0.5, extW=W+0.5;           // plinth extent (min +6&amp;quot;)
+  const VW=760, VH=560;
+  let s=&amp;quot;&amp;quot;;
+  s+=`<rect width=&amp;quot;${VW}&amp;quot; height=&amp;quot;${VH}&amp;quot; fill=&amp;quot;#fff&amp;quot;/>`;
+  s+=`<text x=&amp;quot;${VW/2}&amp;quot; y=&amp;quot;26&amp;quot; text-anchor=&amp;quot;middle&amp;quot; font-size=&amp;quot;17&amp;quot; font-weight=&amp;quot;800&amp;quot; fill=&amp;quot;${INK}&amp;quot; text-decoration=&amp;quot;underline&amp;quot;>TYPICAL CONCRETE PLINTH</text>`;
+  s+=`<text x=&amp;quot;${VW/2}&amp;quot; y=&amp;quot;50&amp;quot; text-anchor=&amp;quot;middle&amp;quot; font-size=&amp;quot;14&amp;quot; font-weight=&amp;quot;700&amp;quot; fill=&amp;quot;${INK}&amp;quot;>TYPE ${S.type}</text>`;
+  // ----- PLAN -----
+  const planTop=70, planBot=330, planMaxW=360, planH=planBot-planTop-30;
+  const sc=Math.min(planMaxW/extL, planH/extW, 26);
+  const pw=extL*sc, ph=extW*sc, px=120, py=planTop+20;
+  const bw=0.5*sc;                         // beam width ~150mm
+  const nA=S.cols+1, nB=S.rows+1;
+  // dimension helpers
+  const dimH=(x1,x2,y,txt)=>`<line x1=&amp;quot;${x1}&amp;quot; y1=&amp;quot;${y}&amp;quot; x2=&amp;quot;${x2}&amp;quot; y2=&amp;quot;${y}&amp;quot; stroke=&amp;quot;${DIM}&amp;quot; stroke-width=&amp;quot;1&amp;quot;/><line x1=&amp;quot;${x1}&amp;quot; y1=&amp;quot;${y-4}&amp;quot; x2=&amp;quot;${x1}&amp;quot; y2=&amp;quot;${y+4}&amp;quot; stroke=&amp;quot;${DIM}&amp;quot; stroke-width=&amp;quot;1&amp;quot;/><line x1=&amp;quot;${x2}&amp;quot; y1=&amp;quot;${y-4}&amp;quot; x2=&amp;quot;${x2}&amp;quot; y2=&amp;quot;${y+4}&amp;quot; stroke=&amp;quot;${DIM}&amp;quot; stroke-width=&amp;quot;1&amp;quot;/><text x=&amp;quot;${(x1+x2)/2}&amp;quot; y=&amp;quot;${y-5}&amp;quot; text-anchor=&amp;quot;middle&amp;quot; font-size=&amp;quot;11&amp;quot; font-weight=&amp;quot;700&amp;quot; fill=&amp;quot;${DIM}&amp;quot;>${txt}</text>`;
+  const dimV=(x,y1,y2,txt)=>`<line x1=&amp;quot;${x}&amp;quot; y1=&amp;quot;${y1}&amp;quot; x2=&amp;quot;${x}&amp;quot; y2=&amp;quot;${y2}&amp;quot; stroke=&amp;quot;${DIM}&amp;quot; stroke-width=&amp;quot;1&amp;quot;/><line x1=&amp;quot;${x-4}&amp;quot; y1=&amp;quot;${y1}&amp;quot; x2=&amp;quot;${x+4}&amp;quot; y2=&amp;quot;${y1}&amp;quot; stroke=&amp;quot;${DIM}&amp;quot; stroke-width=&amp;quot;1&amp;quot;/><line x1=&amp;quot;${x-4}&amp;quot; y1=&amp;quot;${y2}&amp;quot; x2=&amp;quot;${x+4}&amp;quot; y2=&amp;quot;${y2}&amp;quot; stroke=&amp;quot;${DIM}&amp;quot; stroke-width=&amp;quot;1&amp;quot;/><text x=&amp;quot;${x-7}&amp;quot; y=&amp;quot;${(y1+y2)/2}&amp;quot; text-anchor=&amp;quot;middle&amp;quot; font-size=&amp;quot;11&amp;quot; font-weight=&amp;quot;700&amp;quot; fill=&amp;quot;${DIM}&amp;quot; transform=&amp;quot;rotate(-90 ${x-7} ${(y1+y2)/2})&amp;quot;>${txt}</text>`;
+  if(S.type===&amp;quot;A&amp;quot;){
+    // beams across width, spaced along length
+    for(let i=0;i<nA;i++){const cx=px+(0.25+i*4)*sc;s+=`<rect x=&amp;quot;${(cx-bw/2).toFixed(1)}&amp;quot; y=&amp;quot;${(py+0.25*sc).toFixed(1)}&amp;quot; width=&amp;quot;${bw.toFixed(1)}&amp;quot; height=&amp;quot;${(W*sc).toFixed(1)}&amp;quot; fill=&amp;quot;none&amp;quot; stroke=&amp;quot;${INK}&amp;quot; stroke-width=&amp;quot;2.4&amp;quot;/>`;}
+    // top total dim + 1220 spacings
+    s+=dimH(px,px+pw,py-30,ftLabel(extL));
+    for(let i=0;i<nA-1;i++){const a=px+(0.25+i*4)*sc,b=px+(0.25+(i+1)*4)*sc;s+=dimH(a,b,py-12,&amp;quot;1220&amp;quot;);}
+    s+=dimV(px-14,py,py+ph,ftLabel(extW));
+    // beam width callout
+    const c0=px+(0.25+1*4)*sc;s+=dimH(c0-bw/2,c0+bw/2,py+ph+20,&amp;quot;MIN 150&amp;quot;);
+  } else {
+    // beams along length, spaced along width
+    for(let j=0;j<nB;j++){const cy=py+(0.25+j*4)*sc;s+=`<rect x=&amp;quot;${(px+0.25*sc).toFixed(1)}&amp;quot; y=&amp;quot;${(cy-bw/2).toFixed(1)}&amp;quot; width=&amp;quot;${(L*sc).toFixed(1)}&amp;quot; height=&amp;quot;${bw.toFixed(1)}&amp;quot; fill=&amp;quot;none&amp;quot; stroke=&amp;quot;${INK}&amp;quot; stroke-width=&amp;quot;2.4&amp;quot;/>`;}
+    s+=dimH(px,px+pw,py-16,ftLabel(extL));
+    for(let j=0;j<nB-1;j++){const a=py+(0.25+j*4)*sc,b=py+(0.25+(j+1)*4)*sc;s+=dimV(px-14,a,b,&amp;quot;1220&amp;quot;);}
+    s+=dimV(px-30,py,py+ph,ftLabel(extW));
+    const r0=py+(0.25+1*4)*sc;s+=`<line x1=&amp;quot;${px+pw+8}&amp;quot; y1=&amp;quot;${r0-bw/2}&amp;quot; x2=&amp;quot;${px+pw+8}&amp;quot; y2=&amp;quot;${r0+bw/2}&amp;quot; stroke=&amp;quot;${DIM}&amp;quot; stroke-width=&amp;quot;1&amp;quot;/><text x=&amp;quot;${px+pw+14}&amp;quot; y=&amp;quot;${r0+3}&amp;quot; font-size=&amp;quot;11&amp;quot; font-weight=&amp;quot;700&amp;quot; fill=&amp;quot;${DIM}&amp;quot;>MIN 150</text>`;
+  }
+  s+=`<text x=&amp;quot;${px+pw/2}&amp;quot; y=&amp;quot;${py+ph+44}&amp;quot; text-anchor=&amp;quot;middle&amp;quot; font-size=&amp;quot;13&amp;quot; font-weight=&amp;quot;700&amp;quot; fill=&amp;quot;${INK}&amp;quot;>PLAN</text>`;
+  // note
+  s+=`<text x=&amp;quot;${VW-250}&amp;quot; y=&amp;quot;${planTop+95}&amp;quot; font-size=&amp;quot;13&amp;quot; font-weight=&amp;quot;700&amp;quot; fill=&amp;quot;${NOTE}&amp;quot;>← Concrete plinth</text>`;
+  s+=`<text x=&amp;quot;${VW-250}&amp;quot; y=&amp;quot;${planTop+113}&amp;quot; font-size=&amp;quot;13&amp;quot; font-weight=&amp;quot;700&amp;quot; fill=&amp;quot;${NOTE}&amp;quot;>&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;by Contractor</text>`;
+  s+=`<text x=&amp;quot;${VW-250}&amp;quot; y=&amp;quot;${planTop+150}&amp;quot; font-size=&amp;quot;12&amp;quot; font-style=&amp;quot;italic&amp;quot; fill=&amp;quot;${DIM}&amp;quot;>I/We confirmed the diagram provided</text>`;
+  s+=`<text x=&amp;quot;${VW-250}&amp;quot; y=&amp;quot;${planTop+190}&amp;quot; font-size=&amp;quot;13&amp;quot; font-style=&amp;quot;italic&amp;quot; fill=&amp;quot;${INK}&amp;quot;>Chop &amp;amp;amp; Signature</text>`;
+  s+=`<line x1=&amp;quot;${VW-250}&amp;quot; y1=&amp;quot;${planTop+205}&amp;quot; x2=&amp;quot;${VW-30}&amp;quot; y2=&amp;quot;${planTop+205}&amp;quot; stroke=&amp;quot;${DIM}&amp;quot; stroke-width=&amp;quot;1&amp;quot;/>`;
+  s+=`<text x=&amp;quot;${VW-250}&amp;quot; y=&amp;quot;${planTop+224}&amp;quot; font-size=&amp;quot;12&amp;quot; font-style=&amp;quot;italic&amp;quot; fill=&amp;quot;${INK}&amp;quot;>Name :</text>`;
+  s+=`<text x=&amp;quot;${VW-250}&amp;quot; y=&amp;quot;${planTop+242}&amp;quot; font-size=&amp;quot;12&amp;quot; font-style=&amp;quot;italic&amp;quot; fill=&amp;quot;${INK}&amp;quot;>Capacity :</text>`;
+  s+=`<text x=&amp;quot;${VW-250}&amp;quot; y=&amp;quot;${planTop+260}&amp;quot; font-size=&amp;quot;12&amp;quot; font-style=&amp;quot;italic&amp;quot; fill=&amp;quot;${INK}&amp;quot;>Date :</text>`;
+  // ----- ELEVATION -----
+  const ey=planBot+70, ex=px;
+  s+=`<defs><pattern id=&amp;quot;hatch&amp;quot; width=&amp;quot;5&amp;quot; height=&amp;quot;5&amp;quot; patternUnits=&amp;quot;userSpaceOnUse&amp;quot;><rect width=&amp;quot;5&amp;quot; height=&amp;quot;5&amp;quot; fill=&amp;quot;#fff&amp;quot;/><circle cx=&amp;quot;2.5&amp;quot; cy=&amp;quot;2.5&amp;quot; r=&amp;quot;1&amp;quot; fill=&amp;quot;#5a6675&amp;quot;/></pattern></defs>`;
+  const eN=(S.type===&amp;quot;A&amp;quot;)?nA:nB, span=(S.type===&amp;quot;A&amp;quot;)?extL:extW, esc2=Math.min(360/span,26);
+  const ebw=0.5*esc2, eh=2.0*esc2; // beam end ~150mm wide, plinth height ~600mm(2ft)
+  s+=dimV(ex-14,ey,ey+eh,&amp;quot;MIN 600mm&amp;quot;);
+  for(let i=0;i<eN;i++){const cx=ex+(0.25+i*4)*esc2;const fill=i===0?&amp;quot;#fff&amp;quot;:&amp;quot;url(#hatch)&amp;quot;;s+=`<rect x=&amp;quot;${(cx-ebw/2).toFixed(1)}&amp;quot; y=&amp;quot;${ey.toFixed(1)}&amp;quot; width=&amp;quot;${ebw.toFixed(1)}&amp;quot; height=&amp;quot;${eh.toFixed(1)}&amp;quot; fill=&amp;quot;${fill}&amp;quot; stroke=&amp;quot;${INK}&amp;quot; stroke-width=&amp;quot;2&amp;quot;/>`;}
+  s+=`<text x=&amp;quot;${ex+span*esc2/2}&amp;quot; y=&amp;quot;${ey+eh+26}&amp;quot; text-anchor=&amp;quot;middle&amp;quot; font-size=&amp;quot;13&amp;quot; font-weight=&amp;quot;700&amp;quot; fill=&amp;quot;${INK}&amp;quot;>ELEVATION</text>`;
+  document.getElementById(&amp;quot;draw&amp;quot;).setAttribute(&amp;quot;viewBox&amp;quot;,`0 0 ${VW} ${VH}`);
+  document.getElementById(&amp;quot;draw&amp;quot;).innerHTML=s;
+}
+
+function sizeVals(){document.getElementById(&amp;quot;colsV&amp;quot;).textContent=`${S.cols}·${S.cols*4}′`;document.getElementById(&amp;quot;rowsV&amp;quot;).textContent=`${S.rows}·${S.rows*4}′`;document.getElementById(&amp;quot;heightV&amp;quot;).textContent=`${S.height}·${S.height*4}′`;
+  const t=`${S.cols*4}′ × ${S.rows*4}′ × ${S.height*4}′`;document.getElementById(&amp;quot;sizeChip&amp;quot;).textContent=t;
+  document.getElementById(&amp;quot;tbSize&amp;quot;).textContent=`${S.cols*4}' x ${S.rows*4}' x ${S.height*4}'(H) HDG TANK`;}
+function clampSize(){S.cols=Math.max(1,Math.min(14,S.cols));S.rows=Math.max(1,Math.min(10,S.rows));S.height=Math.max(1,Math.min(6,S.height));}
+function refresh(){sizeVals();draw();}
+
+// sync rail title-block <-> sheet title-block
+function link(a,b){const A=document.getElementById(a),B=document.getElementById(b);if(!A||!B)return;A.addEventListener(&amp;quot;input&amp;quot;,()=>B.value=A.value);B.addEventListener(&amp;quot;input&amp;quot;,()=>A.value=B.value);}
+[&amp;quot;tbFin&amp;quot;,&amp;quot;tbCust&amp;quot;,&amp;quot;tbProj&amp;quot;,&amp;quot;tbSheet&amp;quot;,&amp;quot;tbDate&amp;quot;].forEach(id=>link(id,id+&amp;quot;2&amp;quot;));
+
+document.querySelectorAll(&amp;quot;[data-d]&amp;quot;).forEach(b=>b.addEventListener(&amp;quot;click&amp;quot;,()=>{S[b.dataset.d]+=+b.dataset.v;clampSize();refresh();}));
+document.querySelectorAll(&amp;quot;#typeSeg button&amp;quot;).forEach(b=>b.addEventListener(&amp;quot;click&amp;quot;,()=>{S.type=b.dataset.t;document.querySelectorAll(&amp;quot;#typeSeg button&amp;quot;).forEach(x=>x.classList.toggle(&amp;quot;on&amp;quot;,x===b));draw();}));
+document.getElementById(&amp;quot;menuBtn&amp;quot;).addEventListener(&amp;quot;click&amp;quot;,()=>document.getElementById(&amp;quot;rail&amp;quot;).classList.toggle(&amp;quot;hidden&amp;quot;));
+
+document.getElementById(&amp;quot;pngBtn&amp;quot;).addEventListener(&amp;quot;click&amp;quot;,()=>{
+  const svg=document.getElementById(&amp;quot;draw&amp;quot;),vb=svg.viewBox.baseVal,W=Math.round(vb.width),H=Math.round(vb.height);
+  const out=`<svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;${W}&amp;quot; height=&amp;quot;${H}&amp;quot;><rect width=&amp;quot;100%&amp;quot; height=&amp;quot;100%&amp;quot; fill=&amp;quot;#fff&amp;quot;/>${svg.innerHTML}</svg>`;
+  const url=URL.createObjectURL(new Blob([out],{type:&amp;quot;image/svg+xml;charset=utf-8&amp;quot;})),img=new Image();
+  img.onload=function(){const cv=document.createElement(&amp;quot;canvas&amp;quot;);cv.width=W*2;cv.height=H*2;const cx=cv.getContext(&amp;quot;2d&amp;quot;);cx.scale(2,2);cx.drawImage(img,0,0);URL.revokeObjectURL(url);cv.toBlob(b=>{const a=document.createElement(&amp;quot;a&amp;quot;);a.href=URL.createObjectURL(b);a.download=&amp;quot;concrete-plinth-type-&amp;quot;+S.type+&amp;quot;.png&amp;quot;;a.click();});};
+  img.onerror=function(){URL.revokeObjectURL(url);};img.src=url;});
+document.getElementById(&amp;quot;printBtn&amp;quot;).addEventListener(&amp;quot;click&amp;quot;,()=>{
+  const val=id=>{const e=document.getElementById(id);return e?(e.value||&amp;quot;&amp;quot;):&amp;quot;&amp;quot;;};
+  const svg=document.getElementById(&amp;quot;draw&amp;quot;).outerHTML;
+  const body=svg;
+  const fields=[[&amp;quot;Tank Size&amp;quot;,(S.cols*4)+&amp;quot;' x &amp;quot;+(S.rows*4)+&amp;quot;' x &amp;quot;+(S.height*4)+&amp;quot;'(H) HDG&amp;quot;],[&amp;quot;Customer&amp;quot;,val(&amp;quot;tbCust&amp;quot;)],[&amp;quot;Project&amp;quot;,val(&amp;quot;tbProj&amp;quot;)],[&amp;quot;Finishes&amp;quot;,val(&amp;quot;tbFin&amp;quot;)||&amp;quot;HDG Tank&amp;quot;],[&amp;quot;Sheet&amp;quot;,val(&amp;quot;tbSheet&amp;quot;)||&amp;quot;1/1&amp;quot;],[&amp;quot;Date&amp;quot;,val(&amp;quot;tbDate&amp;quot;)],[&amp;quot;Plinth Type&amp;quot;,&amp;quot;Type &amp;quot;+S.type],[&amp;quot;Confirmed&amp;quot;,&amp;quot;Chop &amp;amp; Sign ____&amp;quot;]];
+  const w=window.open(&amp;quot;&amp;quot;,&amp;quot;_blank&amp;quot;);if(!w)return;
+  w.document.write('<!doctype html><html><head><title>Concrete Plinth '+(S.cols*4)+'x'+(S.rows*4)+'x'+(S.height*4)+'</title><style>'+jtPrintCSS()+'</style></head><body>'+jtSheet(&amp;quot;Typical Concrete Plinth — Type &amp;quot;+S.type,body,fields)+'<scr'+'ipt>window.onload=function(){window.print();}</scr'+'ipt></body></html>');
+  w.document.close();
+});
+/* ERP size sync */
+window.addEventListener(&amp;quot;message&amp;quot;,function(e){const d=e.data;if(!d)return;if(d.type===&amp;quot;jtTankSize&amp;quot;){if(d.cols)S.cols=Math.max(1,Math.min(14,d.cols|0));if(d.rows)S.rows=Math.max(1,Math.min(10,d.rows|0));if(d.height)S.height=Math.max(1,Math.min(6,d.height|0));clampSize();refresh();}if(d.type===&amp;quot;jtRelayout&amp;quot;)draw();});
+try{parent.postMessage({type:&amp;quot;jtFitReady&amp;quot;},&amp;quot;*&amp;quot;);}catch(_){}
+
+refresh();
+</script>
+</body>
+</html>
+&quot;></iframe>
+  </div>
+</div>
+<script>
+ var fP=document.getElementById(&quot;fP&quot;),fL=document.getElementById(&quot;fL&quot;),tabP=document.getElementById(&quot;tabP&quot;),tabL=document.getElementById(&quot;tabL&quot;);
+ var last=null;
+ function fwd(fr,m){try{fr&amp;&amp;fr.contentWindow&amp;&amp;fr.contentWindow.postMessage(m,&quot;*&quot;);}catch(e){}}
+ function show(p){fP.classList.toggle(&quot;hide&quot;,!p);fL.classList.toggle(&quot;hide&quot;,p);tabP.classList.toggle(&quot;on&quot;,p);tabL.classList.toggle(&quot;on&quot;,!p);var fr=p?fP:fL;fwd(fr,{type:&quot;jtRelayout&quot;});if(last)fwd(fr,last);setTimeout(function(){fwd(fr,{type:&quot;jtRelayout&quot;});},120);}
+ tabP.addEventListener(&quot;click&quot;,function(){show(true);});
+ tabL.addEventListener(&quot;click&quot;,function(){show(false);});
+ window.addEventListener(&quot;message&quot;,function(e){var d=e.data;if(!d)return;
+   if(d.type===&quot;jtTankSize&quot;){last=d;fwd(fP,d);fwd(fL,d);}
+   else if(d.type===&quot;jtRelayout&quot;){fwd(fP,d);fwd(fL,d);}
+   else if(d.type===&quot;jtFitReady&quot;){fwd(fP,last);fwd(fL,last);try{parent.postMessage({type:&quot;jtFitReady&quot;},&quot;*&quot;);}catch(_){}}});
+ try{parent.postMessage({type:&quot;jtFitReady&quot;},&quot;*&quot;);}catch(_){}
+</script>
+</body></html>"></iframe></div></div><script>(function(){var $=function(i){return document.getElementById(i);};
 function jobSize(){try{var p=JSON.parse(localStorage.getItem("tankproj")||"null");if(p&&p.drawings&&p.drawings.length){var d=p.drawings.filter(function(x){return x.id===p.activeId;})[0]||p.drawings[0];if(d&&d.cols&&d.rows&&d.height)return{cols:d.cols,rows:d.rows,height:d.height};}}catch(e){}return null;}
+function keyOf(s){return s?(s.cols+"x"+s.rows+"x"+s.height):"none";}
 function post(fr,m){try{fr&&fr.contentWindow&&fr.contentWindow.postMessage(m,"*");}catch(e){}}
-function chip(el,s){if(!el)return;el.innerHTML=s?('<i></i> Job: '+(s.cols*4)+'\u2032 \u00d7 '+(s.rows*4)+'\u2032 \u00d7 '+(s.height*4)+'\u2032'):'<i style="background:#b6bfca;box-shadow:none"></i> independent';}
-function openOv(ovId,frId,chipId,extra){var ov=$(ovId),fr=$(frId);ov.classList.add("open");var s=jobSize();chip($(chipId),s);if(s)post(fr,{type:"jtTankSize",cols:s.cols,rows:s.rows,height:s.height});if(extra)post(fr,extra);post(fr,{type:"jtRelayout"});setTimeout(function(){if(extra)post(fr,extra);post(fr,{type:"jtRelayout"});},260);}
+function chip(el,s){if(!el)return;el.innerHTML=s?('<i></i> Linked to ERP &middot; '+(s.cols*4)+'\u2032\u00d7'+(s.rows*4)+'\u2032\u00d7'+(s.height*4)+'\u2032'):'<i style="background:#b6bfca;box-shadow:none"></i> independent';}
+var pollTimer=null,lastKey=null,curFr=null,curChip=null;
+function syncNow(){var s=jobSize();chip(curChip,s);if(curFr&&s)post(curFr,{type:"jtTankSize",cols:s.cols,rows:s.rows,height:s.height});return s;}
+function startLink(fr,chipEl){curFr=fr;curChip=chipEl;lastKey=keyOf(jobSize());if(pollTimer)clearInterval(pollTimer);
+  pollTimer=setInterval(function(){var s=jobSize(),k=keyOf(s);if(k!==lastKey){lastKey=k;chip(curChip,s);if(curFr&&s)post(curFr,{type:"jtTankSize",cols:s.cols,rows:s.rows,height:s.height});}},700);}
+function stopLink(){if(pollTimer){clearInterval(pollTimer);pollTimer=null;}curFr=null;curChip=null;}
+function openOv(ovId,frId,chipId,extra){var ov=$(ovId),fr=$(frId);ov.classList.add("open");var s=jobSize();chip($(chipId),s);if(s)post(fr,{type:"jtTankSize",cols:s.cols,rows:s.rows,height:s.height});if(extra)post(fr,extra);post(fr,{type:"jtRelayout"});startLink(fr,$(chipId));setTimeout(function(){if(extra)post(fr,extra);post(fr,{type:"jtRelayout"});},260);}
 $("jtBtnStudio").addEventListener("click",function(){openOv("jtOvStudio","jtFrStudio","jtChipStudio",{type:"jtStep",n:2});});
 $("jtBtnBom").addEventListener("click",function(){openOv("jtOvStudio","jtFrStudio","jtChipStudio",{type:"jtStep",n:3});});
-$("jtBtnNozzle").addEventListener("click",function(){openOv("jtOvNozzle","jtFrNozzle","jtChipNozzle",null);});
-document.querySelectorAll(".jtClose").forEach(function(b){b.addEventListener("click",function(){$(b.getAttribute("data-cl")).classList.remove("open");});});
-document.querySelectorAll(".jtOv").forEach(function(o){o.addEventListener("click",function(e){if(e.target===o)o.classList.remove("open");});});
-document.addEventListener("keydown",function(e){if(e.key==="Escape")document.querySelectorAll(".jtOv.open").forEach(function(o){o.classList.remove("open");});});
-window.addEventListener("message",function(e){if(e.data&&e.data.type==="jtFitReady"){var s=jobSize();if(s){post($("jtFrStudio"),{type:"jtTankSize",cols:s.cols,rows:s.rows,height:s.height});post($("jtFrNozzle"),{type:"jtTankSize",cols:s.cols,rows:s.rows,height:s.height});}}});
+$("jtBtnDraw").addEventListener("click",function(){openOv("jtOvDraw","jtFrDraw","jtChipDraw",null);});
+function closeAll(){document.querySelectorAll(".jtOv.open").forEach(function(o){o.classList.remove("open");});stopLink();}
+document.querySelectorAll(".jtClose").forEach(function(b){b.addEventListener("click",function(){$(b.getAttribute("data-cl")).classList.remove("open");stopLink();});});
+document.querySelectorAll(".jtOv").forEach(function(o){o.addEventListener("click",function(e){if(e.target===o){o.classList.remove("open");stopLink();}});});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeAll();});
+window.addEventListener("message",function(e){if(e.data&&e.data.type==="jtFitReady"){syncNow();}});
 })();</script>
 <!-- end -->
 </body></html>
