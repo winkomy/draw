@@ -193,6 +193,14 @@ react-dom/cjs/react-dom.production.min.js:
   table.bom td.n{text-align:right}
   table.bom tr.tot td{background:#f7faff;font-weight:700}
   table.bom.xls input.pin,table.bom.xls input.qin{width:64px;text-align:right;border:1px solid #e6eaf1;border-radius:6px;padding:3px 5px;font:inherit}
+  table.bom.xls input.tin{width:100%;border:1px solid transparent;border-radius:6px;padding:3px 5px;font:inherit}
+  table.bom.xls input.tin:hover,table.bom.xls input.tin:focus{border-color:#e6eaf1}
+  table.bom.xls input.tin.spec{color:#7a8696;font-size:11px}
+  table.bom td.act{text-align:center;padding:2px 4px;width:30px}
+  table.bom button.delrow{border:0;background:transparent;color:#c0392b;cursor:pointer;font-size:14px;line-height:1;padding:4px 6px;border-radius:6px;opacity:.55}
+  table.bom button.delrow:hover{opacity:1;background:#fdecea}
+  button.addrow{background:linear-gradient(135deg,#1f6fb2,#2a86d6);color:#fff}
+  button.rstrow{background:#eef3f9;color:#46525f}
   table.bom tr.sec td{background:#eef3f9;font-weight:700;color:#46525f;letter-spacing:.04em;font-size:11px}
   table.bom tr.grand td{background:linear-gradient(90deg,#1f4e79,#2a64a0);color:#fff;font-weight:800;font-size:13px}
   table.bom input{width:100%;border:0;background:transparent;font:inherit;color:var(--ink)}
@@ -632,6 +640,8 @@ try{parent.postMessage({type:&quot;jtFitReady&quot;},&quot;*&quot;);}catch(_){}
 S.rate={w15:21.15,w30:42.3,rmKg:6.5,boltsPanel:64,rmBolt:0.85,stayKg:9,fb:1,rollM:10,rmRoll:22.5};
 S.price={man:0,p15:0,p30:0,cleatA:0,cleatB:0,cleatC:0,cleatC1:0,trussPipe:0,trussAngle:0,stay:0,but340:0,but545:0,boltM14:0,washM14:0,bolt58:0,wash58:0,bolt38a:0,bolt38b:0,wash38:0,ladderExt:0,ladderInt:0,ladderWli:0,vent:0};
 S.qty={cleatA:0,cleatB:0,cleatC:0,cleatC1:0,truss1:0,truss2:0};
+S.bom={over:{},del:{},extra:[]};
+function bomNormalize(){if(!S.bom||typeof S.bom!==&quot;object&quot;)S.bom={over:{},del:{},extra:[]};if(!S.bom.over)S.bom.over={};if(!S.bom.del)S.bom.del={};if(!Array.isArray(S.bom.extra))S.bom.extra=[];}
 function stayCount(){let n=0;for(let i=1;i<=S.height;i++)n+=Object.keys(S.levels[i]||{}).length;return n;}
 function bom(){const L=S.cols,Wd=S.rows,H=S.height,ru=Math.ceil,mx=Math.max;
   const manhole=1, roof=mx(0,L*Wd-1), wall=2*L*H+2*Wd*H, floor=L*Wd, panels=manhole+roof+wall+floor;
@@ -661,8 +671,8 @@ function bomDefs(){const b=bom();const lf=S.items.filter(x=>x.type===&quot;ladde
   return [[&quot;__h&quot;,&quot;PANELS&quot;],
     [&quot;Manhole&quot;,&quot;roof opening&quot;,b.manhole,S.rate.w15,&quot;man&quot;],
     [&quot;1.5 mm panel&quot;,&quot;roof = L·W-1&quot;,b.roof,S.rate.w15,&quot;p15&quot;],
-    [&quot;3.0 mm panel&quot;,&quot;walls = 2LH+2WH&quot;,b.wall,S.rate.w30,&quot;p30&quot;],
-    [&quot;3.0 mm panel&quot;,&quot;floor = L·W&quot;,b.floor,S.rate.w30,&quot;p30&quot;],
+    [&quot;3.0 mm panel&quot;,&quot;walls = 2LH+2WH&quot;,b.wall,S.rate.w30,&quot;p30&quot;,&quot;wall&quot;],
+    [&quot;3.0 mm panel&quot;,&quot;floor = L·W&quot;,b.floor,S.rate.w30,&quot;p30&quot;,&quot;floor&quot;],
     [&quot;__h&quot;,&quot;CLEATS&quot;],
     [&quot;Cleat Type A&quot;,&quot;(W-1)·2&quot;,b.cleatA,null,&quot;cleatA&quot;],
     [&quot;Cleat Type B&quot;,&quot;(L-1)(W-1)+(L-1)2+(W-1)2&quot;,b.cleatB,null,&quot;cleatB&quot;],
@@ -691,10 +701,36 @@ function bomDefs(){const b=bom();const lf=S.items.filter(x=>x.type===&quot;ladde
     [&quot;Ladder WLI&quot;,&quot;ft&quot;,lf,null,&quot;ladderWli&quot;],
     [&quot;Air vent&quot;,&quot;&quot;,b.vent,null,&quot;vent&quot;]];
 }
-function exportXls(){const P=S.price;const defs=bomDefs();let grand=0,rows=&quot;&quot;;
-  for(const ln of defs){if(ln[0]===&quot;__h&quot;){rows+='<tr><td colspan=&quot;6&quot; style=&quot;background:#dfe7f2;font-weight:bold&quot;>'+ln[1]+'</td></tr>';continue;}
-    const item=ln[0],spec=ln[1],qty=ln[2],unitkg=ln[3],pk=ln[4];const price=P[pk]||0,tot=qty*price;grand+=tot;
-    rows+='<tr><td>'+item+'</td><td>'+spec+'</td><td>'+qty+'</td><td>'+(unitkg!=null?unitkg:&quot;&quot;)+'</td><td>'+price+'</td><td>'+tot.toFixed(2)+'</td></tr>';}
+function escA(s){return String(s==null?&quot;&quot;:s).replace(/&amp;/g,&quot;&amp;amp;&quot;).replace(/&quot;/g,&quot;&amp;quot;&quot;).replace(/</g,&quot;&amp;lt;&quot;);}
+// effective BOM rows = generated rows + user edits (override / delete) + custom rows.
+// row: {h} header, OR {k,pk,gen|custom,item,spec,qty,unitkg,price}
+function effectiveBom(){bomNormalize();const O=S.bom.over,D=S.bom.del,out=[];
+  for(const ln of bomDefs()){
+    if(ln[0]===&quot;__h&quot;){out.push({h:ln[1]});continue;}
+    const item=ln[0],spec=ln[1],qty=ln[2],unitkg=ln[3],pk=ln[4],k=ln[5]||pk;
+    if(D[k])continue;const o=O[k]||{};
+    out.push({k:k,pk:pk,gen:true,
+      item:o.item!=null?o.item:item,
+      spec:o.spec!=null?o.spec:spec,
+      qty:o.qty!=null?o.qty:qty,
+      unitkg:(&quot;unitkg&quot; in o)?o.unitkg:unitkg,
+      price:(o.price!=null?o.price:(S.price[pk]||0))});
+  }
+  if(S.bom.extra.length){out.push({h:&quot;CUSTOM ITEMS&quot;});
+    for(const e of S.bom.extra)out.push({k:e.k,custom:true,item:e.item,spec:e.spec,qty:+e.qty||0,unitkg:(e.unitkg===&quot;&quot;||e.unitkg==null)?null:+e.unitkg,price:+e.price||0});}
+  return out;
+}
+function bomApplyEdit(k,f,raw){bomNormalize();if(!k||!f)return;
+  var v;if(f===&quot;item&quot;||f===&quot;spec&quot;)v=raw;else if(f===&quot;unitkg&quot;)v=(raw===&quot;&quot;?null:(parseFloat(raw)||0));else v=(parseFloat(raw)||0);
+  var ex=S.bom.extra.find(function(x){return x.k===k;});
+  if(ex){ex[f]=v;}else{(S.bom.over[k]=S.bom.over[k]||{})[f]=v;}
+}
+function bomDelete(k){bomNormalize();if(!k)return;var i=S.bom.extra.findIndex(function(x){return x.k===k;});if(i>=0){S.bom.extra.splice(i,1);}else{S.bom.del[k]=true;}}
+function bomAdd(){bomNormalize();S.bom.extra.push({k:&quot;c&quot;+Date.now().toString(36)+Math.floor(Math.random()*1e4),item:&quot;New item&quot;,spec:&quot;&quot;,qty:1,unitkg:null,price:0});}
+function exportXls(){const defs=effectiveBom();let grand=0,rows=&quot;&quot;;
+  for(const ln of defs){if(ln.h){rows+='<tr><td colspan=&quot;6&quot; style=&quot;background:#dfe7f2;font-weight:bold&quot;>'+ln.h+'</td></tr>';continue;}
+    const tot=(+ln.qty||0)*(+ln.price||0);grand+=tot;
+    rows+='<tr><td>'+ln.item+'</td><td>'+ln.spec+'</td><td>'+ln.qty+'</td><td>'+(ln.unitkg!=null?ln.unitkg:&quot;&quot;)+'</td><td>'+ln.price+'</td><td>'+tot.toFixed(2)+'</td></tr>';}
   const html='<html xmlns:x=&quot;urn:schemas-microsoft-com:office:excel&quot;><head><meta charset=&quot;utf-8&quot;></head><body>'+
     '<table border=&quot;1&quot;><tr><td colspan=&quot;6&quot; style=&quot;font-size:15px;font-weight:bold&quot;>JUTARAMA INDUSTRIES SDN BHD - BOM '+(S.cols*4)+'x'+(S.rows*4)+'x'+(S.height*4)+'</td></tr>'+
     '<tr><th>Item</th><th>Spec</th><th>Qty</th><th>Unit kg</th><th>Unit RM</th><th>Total RM</th></tr>'+rows+
@@ -703,16 +739,14 @@ function exportXls(){const P=S.price;const defs=bomDefs();let grand=0,rows=&quot
   const a=document.createElement(&quot;a&quot;);a.href=URL.createObjectURL(new Blob([html],{type:&quot;application/vnd.ms-excel&quot;}));a.download=&quot;BOM-&quot;+(S.cols*4)+&quot;x&quot;+(S.rows*4)+&quot;x&quot;+(S.height*4)+&quot;.xls&quot;;a.click();
 }
 function renderBOM(){
-  const b=bom();const P=S.price,Q=S.qty;
-  const ladderFt=S.items.filter(x=>x.type===&quot;ladder&quot;).length*S.height*4;
-  // line: [item, spec, qty, unitkg|null, priceKey, editQtyKey|null]
-  const lines=bomDefs();
+  const b=bom();bomNormalize();
+  const lines=effectiveBom();
   let grand=0,rows=&quot;&quot;;
   for(const ln of lines){
-    if(ln[0]===&quot;__h&quot;){rows+=`<tr class=&quot;sec&quot;><td colspan=&quot;6&quot;>${ln[1]}</td></tr>`;continue;}
-    const [item,spec,qty,unitkg,pk,qk]=ln;const price=P[pk]||0,tot=qty*price;grand+=tot;
-    const qcell=qk?`<input data-q=&quot;${qk}&quot; type=&quot;number&quot; value=&quot;${qty}&quot; class=&quot;qin&quot;>`:fmt(qty);
-    rows+=`<tr><td>${item}</td><td style=&quot;color:#7a8696&quot;>${spec}</td><td class=&quot;n&quot;>${qcell}</td><td class=&quot;n&quot;>${unitkg!=null?fmt(unitkg,1):&quot;—&quot;}</td><td class=&quot;n&quot;><input data-p=&quot;${pk}&quot; type=&quot;number&quot; step=&quot;0.01&quot; value=&quot;${price}&quot; class=&quot;pin&quot;></td><td class=&quot;n&quot;>${fmt(tot,2)}</td></tr>`;
+    if(ln.h){rows+=`<tr class=&quot;sec&quot;><td colspan=&quot;7&quot;>${escA(ln.h)}</td></tr>`;continue;}
+    const tot=(+ln.qty||0)*(+ln.price||0);grand+=tot;
+    const dk=`data-k=&quot;${ln.k}&quot;`;
+    rows+=`<tr><td><input ${dk} data-f=&quot;item&quot; class=&quot;tin&quot; value=&quot;${escA(ln.item)}&quot;></td><td><input ${dk} data-f=&quot;spec&quot; class=&quot;tin spec&quot; value=&quot;${escA(ln.spec)}&quot;></td><td class=&quot;n&quot;><input ${dk} data-f=&quot;qty&quot; type=&quot;number&quot; step=&quot;any&quot; value=&quot;${ln.qty}&quot; class=&quot;qin&quot;></td><td class=&quot;n&quot;><input ${dk} data-f=&quot;unitkg&quot; type=&quot;number&quot; step=&quot;any&quot; value=&quot;${ln.unitkg!=null?ln.unitkg:&quot;&quot;}&quot; class=&quot;qin&quot;></td><td class=&quot;n&quot;><input ${dk} data-f=&quot;price&quot; type=&quot;number&quot; step=&quot;0.01&quot; value=&quot;${ln.price}&quot; class=&quot;pin&quot;></td><td class=&quot;n&quot;>${fmt(tot,2)}</td><td class=&quot;act&quot;><button class=&quot;delrow&quot; data-del=&quot;${ln.k}&quot; title=&quot;Delete item&quot;>✕</button></td></tr>`;
   }
   document.getElementById(&quot;bomSheet&quot;).innerHTML=`<div class=&quot;sheet&quot;>
     <div class=&quot;tb-blk&quot;><div><div class=&quot;co&quot;>JUTARAMA INDUSTRIES SDN BHD</div><div class=&quot;mt&quot;>HDG Sectional Steel Water Tank · Bill of Materials</div></div>
@@ -723,13 +757,17 @@ function renderBOM(){
       <div class=&quot;card&quot;><div class=&quot;k&quot;>Total weight</div><div class=&quot;val&quot;>${fmt(b.weight+b.stayWt)}</div><div class=&quot;u&quot;>kg HDG</div></div>
     </div>
     <h3>Bill of materials</h3>
-    <table class=&quot;bom xls&quot;><thead><tr><th>Item</th><th>Spec</th><th class=&quot;n&quot;>Qty</th><th class=&quot;n&quot;>Unit kg</th><th class=&quot;n&quot;>Unit RM</th><th class=&quot;n&quot;>Total RM</th></tr></thead>
-    <tbody>${rows}<tr class=&quot;grand&quot;><td colspan=&quot;5&quot;>ESTIMATED MATERIAL TOTAL</td><td class=&quot;n&quot;>RM ${fmt(grand,2)}</td></tr></tbody></table>
-    <p style=&quot;font-size:11px;color:#93a0af;margin-top:10px&quot;>Panel/bolt qty per JUTARAMA standard. Enter unit prices (and cleat/truss qty) to match your Excel; angle stays come from your drawing.</p>
-    <div style=&quot;display:flex;gap:8px;margin-top:14px;flex-wrap:wrap&quot; id=&quot;bomActions&quot;><button class=&quot;nav&quot; id=&quot;xlsBtn&quot; style=&quot;background:linear-gradient(135deg,#1d7a4d,#239e63)&quot;>⬇ Export Excel</button><button class=&quot;nav&quot; id=&quot;printBtn&quot;>🖨️ Print / Save PDF</button><button class=&quot;nav&quot; id=&quot;spdfBtn&quot; style=&quot;background:linear-gradient(135deg,#4a3f8a,#5f52b0)&quot;>⬇ PDF (Server)</button></div>
+    <table class=&quot;bom xls&quot;><thead><tr><th>Item</th><th>Spec</th><th class=&quot;n&quot;>Qty</th><th class=&quot;n&quot;>Unit kg</th><th class=&quot;n&quot;>Unit RM</th><th class=&quot;n&quot;>Total RM</th><th class=&quot;act&quot;></th></tr></thead>
+    <tbody>${rows}<tr class=&quot;grand&quot;><td colspan=&quot;6&quot;>ESTIMATED MATERIAL TOTAL</td><td class=&quot;n&quot;>RM ${fmt(grand,2)}</td></tr></tbody></table>
+    <p style=&quot;font-size:11px;color:#93a0af;margin-top:10px&quot;>Every cell is editable — item, spec, qty, unit&#8209;kg and price. Use ✕ to delete a row, ＋ Add item for extras, ↺ Reset to restore JUTARAMA defaults. Angle stays come from your drawing.</p>
+    <div style=&quot;display:flex;gap:8px;margin-top:14px;flex-wrap:wrap&quot; id=&quot;bomActions&quot;><button class=&quot;nav addrow&quot; id=&quot;addRowBtn&quot;>＋ Add item</button><button class=&quot;nav rstrow&quot; id=&quot;resetBomBtn&quot;>↺ Reset edits</button><button class=&quot;nav&quot; id=&quot;xlsBtn&quot; style=&quot;background:linear-gradient(135deg,#1d7a4d,#239e63)&quot;>⬇ Export Excel</button><button class=&quot;nav&quot; id=&quot;printBtn&quot;>🖨️ Print / Save PDF</button><button class=&quot;nav&quot; id=&quot;spdfBtn&quot; style=&quot;background:linear-gradient(135deg,#4a3f8a,#5f52b0)&quot;>⬇ PDF (Server)</button></div>
   </div>`;
-  document.querySelectorAll(&quot;[data-p]&quot;).forEach(inp=>inp.addEventListener(&quot;change&quot;,e=>{S.price[e.target.getAttribute(&quot;data-p&quot;)]=parseFloat(e.target.value)||0;renderBOM();}));
-  document.querySelectorAll(&quot;[data-q]&quot;).forEach(inp=>inp.addEventListener(&quot;change&quot;,e=>{S.qty[e.target.getAttribute(&quot;data-q&quot;)]=parseFloat(e.target.value)||0;renderBOM();}));
+  const sheet=document.getElementById(&quot;bomSheet&quot;);
+  sheet.querySelectorAll(&quot;input.tin&quot;).forEach(inp=>inp.addEventListener(&quot;input&quot;,e=>{bomApplyEdit(e.target.getAttribute(&quot;data-k&quot;),e.target.getAttribute(&quot;data-f&quot;),e.target.value);}));
+  sheet.querySelectorAll(&quot;input.qin,input.pin&quot;).forEach(inp=>inp.addEventListener(&quot;change&quot;,e=>{commit();bomApplyEdit(e.target.getAttribute(&quot;data-k&quot;),e.target.getAttribute(&quot;data-f&quot;),e.target.value);renderBOM();}));
+  sheet.querySelectorAll(&quot;button.delrow&quot;).forEach(btn=>btn.addEventListener(&quot;click&quot;,e=>{commit();bomDelete(e.currentTarget.getAttribute(&quot;data-del&quot;));renderBOM();}));
+  document.getElementById(&quot;addRowBtn&quot;).addEventListener(&quot;click&quot;,()=>{commit();bomAdd();renderBOM();});
+  document.getElementById(&quot;resetBomBtn&quot;).addEventListener(&quot;click&quot;,()=>{if(!confirm(&quot;Reset all BOM edits, deletions and custom items to JUTARAMA defaults?&quot;))return;commit();S.bom={over:{},del:{},extra:[]};renderBOM();});
   document.getElementById(&quot;printBtn&quot;).addEventListener(&quot;click&quot;,exportReport);var _sp=document.getElementById(&quot;spdfBtn&quot;);if(_sp)_sp.addEventListener(&quot;click&quot;,exportServerPDF);
   document.getElementById(&quot;xlsBtn&quot;).addEventListener(&quot;click&quot;,exportXls);
 }
@@ -767,8 +805,8 @@ function exportReport(){
 const KEY_P=&quot;jt_studio_projects&quot;,KEY_T=&quot;jt_studio_templates&quot;;
 function readStore(k){try{return JSON.parse(localStorage.getItem(k)||&quot;[]&quot;);}catch(e){return [];}}
 function writeStore(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
-function serialize(){return {cols:S.cols,rows:S.rows,height:S.height,levels:S.levels,levelsOn:S.levelsOn,full:S.full,lshape:S.lshape,parts:S.parts,blocks:S.blocks,labels:S.labels,lines:S.lines,circles:S.circles,sgl:S.sgl,dblA:S.dblA,dblB:S.dblB,pcol:S.pcol,items:S.items,rate:S.rate,price:S.price,qty:S.qty,roof:S.roof,cutaway:S.cutaway,footprint:S.footprint,dims:S.dims};}
-function applyState(o){S.cols=o.cols;S.rows=o.rows;S.height=o.height;S.levels=o.levels||{};S.levelsOn=o.levelsOn||{};S.full=o.full!==false;S.lshape=o.lshape!==false;S.parts=o.parts||[];S.blocks=(o.blocks||[]).reduce(function(acc,b){if(typeof b===&quot;string&quot;)acc.push(b);else if(b&amp;&amp;b.c0!=null){for(var cc=b.c0;cc<b.c1;cc++)for(var rr=b.r0;rr<b.r1;rr++)acc.push(cc+&quot;,&quot;+rr);}return acc;},[]);S.labels=o.labels||[];S.lines=o.lines||[];S.circles=o.circles||[];S.pcol=o.pcol||&quot;#1f9e57&quot;;S.sgl=o.sgl||&quot;#d9a022&quot;;S.dblA=o.dblA||&quot;#d23b3b&quot;;S.dblB=o.dblB||&quot;#2563eb&quot;;[&quot;colSgl&quot;,&quot;colDblA&quot;,&quot;colDblB&quot;].forEach((id,k)=>{const el=document.getElementById(id);if(el)el.value=[S.sgl,S.dblA,S.dblB][k];});S.items=o.items||[];S.rate=Object.assign({w15:21.15,w30:42.3,rmKg:6.5,boltsPanel:64,rmBolt:0.85,stayKg:9,fb:1,rollM:10,rmRoll:22.5},o.rate||{});S.price=Object.assign({man:0,p15:0,p30:0,cleatA:0,cleatB:0,cleatC:0,cleatC1:0,trussPipe:0,trussAngle:0,stay:0,but340:0,but545:0,boltM14:0,washM14:0,bolt58:0,wash58:0,bolt38a:0,bolt38b:0,wash38:0,ladderExt:0,ladderInt:0,ladderWli:0,vent:0},o.price||{});S.qty=Object.assign({cleatA:0,cleatB:0,cleatC:0,cleatC1:0,truss1:0,truss2:0},o.qty||{});[&quot;roof&quot;,&quot;cutaway&quot;,&quot;footprint&quot;,&quot;dims&quot;].forEach(k=>{if(k in o)S[k]=o[k];});
+function serialize(){return {cols:S.cols,rows:S.rows,height:S.height,levels:S.levels,levelsOn:S.levelsOn,full:S.full,lshape:S.lshape,parts:S.parts,blocks:S.blocks,labels:S.labels,lines:S.lines,circles:S.circles,sgl:S.sgl,dblA:S.dblA,dblB:S.dblB,pcol:S.pcol,items:S.items,rate:S.rate,price:S.price,qty:S.qty,bom:S.bom,roof:S.roof,cutaway:S.cutaway,footprint:S.footprint,dims:S.dims};}
+function applyState(o){S.cols=o.cols;S.rows=o.rows;S.height=o.height;S.levels=o.levels||{};S.levelsOn=o.levelsOn||{};S.full=o.full!==false;S.lshape=o.lshape!==false;S.parts=o.parts||[];S.blocks=(o.blocks||[]).reduce(function(acc,b){if(typeof b===&quot;string&quot;)acc.push(b);else if(b&amp;&amp;b.c0!=null){for(var cc=b.c0;cc<b.c1;cc++)for(var rr=b.r0;rr<b.r1;rr++)acc.push(cc+&quot;,&quot;+rr);}return acc;},[]);S.labels=o.labels||[];S.lines=o.lines||[];S.circles=o.circles||[];S.pcol=o.pcol||&quot;#1f9e57&quot;;S.sgl=o.sgl||&quot;#d9a022&quot;;S.dblA=o.dblA||&quot;#d23b3b&quot;;S.dblB=o.dblB||&quot;#2563eb&quot;;[&quot;colSgl&quot;,&quot;colDblA&quot;,&quot;colDblB&quot;].forEach((id,k)=>{const el=document.getElementById(id);if(el)el.value=[S.sgl,S.dblA,S.dblB][k];});S.items=o.items||[];S.rate=Object.assign({w15:21.15,w30:42.3,rmKg:6.5,boltsPanel:64,rmBolt:0.85,stayKg:9,fb:1,rollM:10,rmRoll:22.5},o.rate||{});S.price=Object.assign({man:0,p15:0,p30:0,cleatA:0,cleatB:0,cleatC:0,cleatC1:0,trussPipe:0,trussAngle:0,stay:0,but340:0,but545:0,boltM14:0,washM14:0,bolt58:0,wash58:0,bolt38a:0,bolt38b:0,wash38:0,ladderExt:0,ladderInt:0,ladderWli:0,vent:0},o.price||{});S.qty=Object.assign({cleatA:0,cleatB:0,cleatC:0,cleatC1:0,truss1:0,truss2:0},o.qty||{});S.bom=o.bom||{over:{},del:{},extra:[]};bomNormalize();[&quot;roof&quot;,&quot;cutaway&quot;,&quot;footprint&quot;,&quot;dims&quot;].forEach(k=>{if(k in o)S[k]=o[k];});
   initLevels();clampSize();
   [&quot;cutChk&quot;,&quot;cutaway&quot;],[&quot;roofChk&quot;,&quot;roof&quot;],[&quot;footChk&quot;,&quot;footprint&quot;],[&quot;dimChk&quot;,&quot;dims&quot;],[&quot;lshapeChk&quot;,&quot;lshape&quot;];
   document.getElementById(&quot;cutChk&quot;).checked=S.cutaway;document.getElementById(&quot;roofChk&quot;).checked=S.roof;document.getElementById(&quot;footChk&quot;).checked=S.footprint;document.getElementById(&quot;dimChk&quot;).checked=S.dims;var _ls=document.getElementById(&quot;lshapeChk&quot;);if(_ls)_ls.checked=S.lshape;document.getElementById(&quot;fullChk&quot;).checked=S.full;
@@ -813,7 +851,7 @@ document.getElementById(&quot;stepTab3&quot;).addEventListener(&quot;click&quot;
 /* ---------- professional tools: history, selection, export ---------- */
 S.sel=null;
 let UNDO=[],REDO=[];
-function snap(){return JSON.stringify({cols:S.cols,rows:S.rows,height:S.height,levels:S.levels,levelsOn:S.levelsOn,full:S.full,sgl:S.sgl,dblA:S.dblA,dblB:S.dblB,items:S.items,rate:S.rate,price:S.price,qty:S.qty,roof:S.roof,cutaway:S.cutaway,footprint:S.footprint,dims:S.dims});}
+function snap(){return JSON.stringify({cols:S.cols,rows:S.rows,height:S.height,levels:S.levels,levelsOn:S.levelsOn,full:S.full,sgl:S.sgl,dblA:S.dblA,dblB:S.dblB,items:S.items,rate:S.rate,price:S.price,qty:S.qty,bom:S.bom,roof:S.roof,cutaway:S.cutaway,footprint:S.footprint,dims:S.dims});}
 function commit(){UNDO.push(snap());if(UNDO.length>60)UNDO.shift();REDO=[];updUndo();}
 function applySnap(str){applyState(JSON.parse(str));S.sel=null;renderProps();}
 function doUndo(){if(!UNDO.length)return;REDO.push(snap());applySnap(UNDO.pop());updUndo();}
